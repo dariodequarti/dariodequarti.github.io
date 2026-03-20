@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dario De Quarti — PhD Candidate in Economics</title>
   <meta name="description" content="PhD Candidate in Economics at the Geneva Graduate Institute. Research in Development Economics and Trade." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%232a4a7f'/><text x='50' y='62' font-family='Georgia,serif' font-size='42' font-weight='bold' fill='%23faf6ee' text-anchor='middle'>DQ</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet" />
@@ -1364,10 +1365,34 @@
     </div>
   </section>
 
+  <!-- FIELDWORK -->
+  <section id="fieldwork" style="background:var(--bg);">
+    <div class="section-header reveal">
+      <span class="section-num">06 /</span>
+      <h2>Gallery</h2>
+    </div>
+    <div class="carousel-wrapper reveal" style="height:300px;">
+      <button class="carousel-arrow carousel-arrow-left" id="fieldLeft" aria-label="Previous photo">&#8249;</button>
+      <button class="carousel-arrow carousel-arrow-right" id="fieldRight" aria-label="Next photo">&#8250;</button>
+      <div class="carousel-track" id="fieldTrack">
+        <div class="carousel-slide" data-caption="50 billion Zimbabwe dollars &mdash; a piece of monetary history" style="height:240px;width:340px;">
+          <img src="pictures/50_billion.jpg" alt="50 billion Zimbabwe dollar bill" style="object-fit:contain;background:var(--bg2);" />
+        </div>
+        <div class="carousel-slide" data-caption="Lunch break during fieldwork in Zambia" style="height:240px;width:340px;">
+          <img src="pictures/nshima.jpg" alt="Lunch with colleagues in Zambia" />
+        </div>
+        <div class="carousel-slide" data-caption="Railroad crossing in Lusaka" style="height:240px;width:340px;">
+          <img src="pictures/stop_crossing.jpg" alt="Railway crossing in Zambia" />
+        </div>
+      </div>
+    </div>
+    <div class="carousel-caption" id="fieldCaption"></div>
+  </section>
+
   <!-- BEYOND RESEARCH -->
   <section id="football">
     <div class="section-header reveal">
-      <span class="section-num">06 /</span>
+      <span class="section-num">07 /</span>
       <h2>Beyond Research</h2>
     </div>
     <p class="reveal" style="color:var(--ink2); font-size:1.05rem; max-width:600px; margin-bottom:2rem;">
@@ -1484,22 +1509,21 @@
       setTimeout(scrollToEnd, 300);
     })();
 
-    /* ── FOOTBALL CAROUSEL ────────────────────── */
-    (function() {
-      const slides = document.querySelectorAll('.carousel-slide');
-      const caption = document.getElementById('carCaption');
-      const leftBtn = document.getElementById('carLeft');
-      const rightBtn = document.getElementById('carRight');
+    /* ── CAROUSEL (generic, works for multiple instances) ── */
+    function initCarousel(trackId, captionId, leftId, rightId) {
+      const track = document.getElementById(trackId);
+      const slides = track.querySelectorAll('.carousel-slide');
+      const caption = document.getElementById(captionId);
+      const leftBtn = document.getElementById(leftId);
+      const rightBtn = document.getElementById(rightId);
       let current = 0;
       const total = slides.length;
 
-      function updateCarousel() {
+      function update() {
         slides.forEach((slide, i) => {
           let diff = i - current;
-          // Wrap around for smooth feel
           if (diff > Math.floor(total / 2)) diff -= total;
           if (diff < -Math.floor(total / 2)) diff += total;
-
           if (diff === 0) slide.setAttribute('data-pos', '0');
           else if (diff === 1) slide.setAttribute('data-pos', '1');
           else if (diff === -1) slide.setAttribute('data-pos', '-1');
@@ -1512,23 +1536,21 @@
 
       function goTo(index) {
         current = ((index % total) + total) % total;
-        updateCarousel();
+        update();
       }
 
       leftBtn.addEventListener('click', () => goTo(current - 1));
       rightBtn.addEventListener('click', () => goTo(current + 1));
-
-      // Click on neighbor slides to navigate
       slides.forEach((slide, i) => {
         slide.addEventListener('click', () => {
-          if (slide.getAttribute('data-pos') !== '0') {
-            goTo(i);
-          }
+          if (slide.getAttribute('data-pos') !== '0') goTo(i);
         });
       });
+      update();
+    }
 
-      updateCarousel();
-    })();
+    initCarousel('carouselTrack', 'carCaption', 'carLeft', 'carRight');
+    initCarousel('fieldTrack', 'fieldCaption', 'fieldLeft', 'fieldRight');
 
     /* ── SCROLL REVEAL ────────────────────────── */
     const observer = new IntersectionObserver((entries) => {
