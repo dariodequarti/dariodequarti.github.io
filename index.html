@@ -117,10 +117,11 @@
     }
     [data-theme="dark"] nav { background: rgba(17,16,8,0.88); }
     .nav-name {
-      font-family: var(--mono);
+      font-family: var(--sans);
       font-size: 13px;
+      font-weight: 500;
       color: var(--ink2);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
     }
     .nav-name span { color: var(--accent); }
     .nav-links {
@@ -171,7 +172,7 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      background: url('pictures/vic_falls.jpg') center center / cover no-repeat;
+      background: url('pictures/geneva_grad_bckg.jpg') center center / cover no-repeat;
       opacity: 0.08;
       filter: grayscale(30%);
       transition: opacity 0.3s;
@@ -980,8 +981,11 @@
 
     /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 768px) {
-      #home { grid-template-columns: 1fr; padding-top: 80px; }
-      .hero-right { display: none; }
+      #home { grid-template-columns: 1fr auto; padding-top: 80px; gap: 1rem; min-height: auto; align-items: start; }
+      .hero-left { padding: 2rem 0 0 0; }
+      .hero-right { display: flex; align-items: flex-start; padding-top: 2.5rem; }
+      .photo-frame { max-width: 110px; border-radius: 50%; aspect-ratio: 1/1; }
+      .affiliation-badge { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .nav-links { gap: 1.2rem; }
       .paper-item { grid-template-columns: 1fr; }
@@ -1070,25 +1074,33 @@
     <div class="research-subsection reveal">
       <div class="research-sub-title">Ongoing Doctoral Research</div>
       <div class="paper-list">
-        <div class="paper-item no-expand paper-with-preview">
+        <div class="paper-item paper-with-preview" onclick="togglePaper(this)">
           <div>
             <div class="paper-title">Organizing Humanitarian Aid in South Sudan</div>
             <div class="paper-coauthors">with IMPACT Initiatives. Supported by ReCIPE CEPR and SurveyCTO</div>
+            <div class="paper-abstract-preview">
+              How should we invest in and allocate humanitarian aid in conflict-affected economies? I combine six years of geospatial data on trade, aid, and conflict across South Sudanese marketplaces to study the spatial allocation of humanitarian aid.
+            </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-prog">In Progress</span>
+            <span class="paper-expand-icon">+</span>
           </div>
           <div class="paper-preview-img">
             <img src="pictures/ssd_network_map.png" alt="South Sudan trade network map" />
           </div>
         </div>
-        <div class="paper-item no-expand paper-with-preview">
+        <div class="paper-item paper-with-preview" onclick="togglePaper(this)">
           <div>
             <div class="paper-title">Informality on the Intensive Margin in Zambia</div>
             <div class="paper-coauthors">Supported by IGC, UNU-WIDER, STEG-CEPR</div>
+            <div class="paper-abstract-preview">
+              Do formal firms operate informally, and why? I study the rollout of electronic invoicing in Zambia during a period of daily power shortages to understand how firms navigate formality when public infrastructure fails.
+            </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-prog">In Progress</span>
+            <span class="paper-expand-icon">+</span>
           </div>
           <div class="paper-preview-img">
             <img src="pictures/stop_crossing.jpg" alt="Stop crossing in Zambia" />
@@ -1412,14 +1424,32 @@
       <button class="carousel-arrow carousel-arrow-left" id="fieldLeft" aria-label="Previous photo">&#8249;</button>
       <button class="carousel-arrow carousel-arrow-right" id="fieldRight" aria-label="Next photo">&#8250;</button>
       <div class="carousel-track" id="fieldTrack">
+        <div class="carousel-slide" data-caption="IGC Roundtable on distributed solar and SMEs, Zambia" style="height:240px;width:340px;">
+          <img src="pictures/roundtable.jpg" alt="IGC Roundtable discussion in Zambia" />
+        </div>
+        <div class="carousel-slide" data-caption="Presenting research methods at an IGC workshop" style="height:240px;width:340px;">
+          <img src="pictures/presenting.jpg" alt="Presenting at IGC Research Methods Workshop" />
+        </div>
+        <div class="carousel-slide" data-caption="South Sudan trade network map" style="height:240px;width:340px;">
+          <img src="pictures/ssd_network_map.png" alt="South Sudan trade network map" />
+        </div>
+        <div class="carousel-slide" data-caption="E-invoicing ad in Lusaka, Zambia" style="height:240px;width:340px;">
+          <img src="pictures/zambia_smart_invoice.jpg" alt="E-invoicing advertisement in Lusaka, Zambia" style="object-fit:contain;background:var(--bg2);" />
+        </div>
+        <div class="carousel-slide" data-caption="Loadshedding impacts SMEs activity &mdash; here in a beauty salon" style="height:240px;width:340px;">
+          <img src="pictures/beauty_salon_no_elec.jpg" alt="Beauty salon without electricity during loadshedding" />
+        </div>
+        <div class="carousel-slide" data-caption="Railroad crossing in Lusaka" style="height:240px;width:340px;">
+          <img src="pictures/stop_crossing.jpg" alt="Railway crossing in Zambia" />
+        </div>
+        <div class="carousel-slide" data-caption="Victoria Falls, Zambia" style="height:240px;width:340px;">
+          <img src="pictures/vic_falls.jpg" alt="Victoria Falls, Zambia" />
+        </div>
         <div class="carousel-slide" data-caption="Lunch break during fieldwork in Zambia" style="height:240px;width:340px;">
           <img src="pictures/nshima.jpg" alt="Lunch with colleagues in Zambia" />
         </div>
         <div class="carousel-slide" data-caption="50 billion Zimbabwe dollars" style="height:240px;width:340px;">
           <img src="pictures/50_billion.jpg" alt="50 billion Zimbabwe dollar bill" style="object-fit:contain;background:var(--bg2);" />
-        </div>
-        <div class="carousel-slide" data-caption="Railroad crossing in Lusaka" style="height:240px;width:340px;">
-          <img src="pictures/stop_crossing.jpg" alt="Railway crossing in Zambia" />
         </div>
       </div>
     </div>
