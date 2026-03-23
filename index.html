@@ -93,7 +93,7 @@
     /* ── RESET ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: clamp(16px, 1vw, 18px); }
     body {
       background: var(--bg);
       color: var(--ink);
@@ -208,7 +208,7 @@
       padding: 0 clamp(1.5rem, 5vw, 5rem);
       padding-top: 56px;
       gap: 4rem;
-      max-width: 1100px;
+      max-width: 1520px;
       margin: 0 auto;
     }
     .hero-left { padding: 4rem 0; }
@@ -317,7 +317,7 @@
     /* ── SECTION BASE ───────────────────────────── */
     section {
       padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-      max-width: 1100px;
+      max-width: 1520px;
       margin: 0 auto;
     }
     .section-header {
@@ -345,7 +345,7 @@
 
     /* ── NEWS BOX ──────────────────────────────── */
     .news-bar {
-      max-width: 1100px;
+      max-width: 1520px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 5vw, 5rem);
     }
@@ -673,14 +673,14 @@
       overflow: visible;
     }
     #timeline .section-header {
-      max-width: 1100px;
+      max-width: 1520px;
       margin: 0 auto 2.5rem auto;
       padding-left: clamp(1.5rem, 5vw, 5rem);
       padding-right: clamp(1.5rem, 5vw, 5rem);
     }
 
     .timeline-container {
-      max-width: 1100px;
+      max-width: 1520px;
       margin: 0 auto;
       position: relative;
       padding: 0 3.5rem;
@@ -927,7 +927,7 @@
     .view-toggle-btn:not(.active):hover { background: var(--bg2); color: var(--ink2); }
 
     /* List view */
-    .tl-list-view { display: none; max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
+    .tl-list-view { display: none; max-width: 1520px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
     .tl-list-view.active { display: block; }
     .timeline-container.active { display: block; }
     .timeline-container:not(.active) { display: none; }
@@ -1044,7 +1044,7 @@
 
     /* Timeline legend */
     .tl-legend {
-      max-width: 1100px;
+      max-width: 1520px;
       margin: 1.5rem auto 0 auto;
       display: flex;
       gap: 1.5rem;
@@ -2295,7 +2295,7 @@
       }, { passive: true });
       viewport.addEventListener('touchend', () => { if (!isDragging) return; isDragging = false; scrollTo(offset + (touchStartX - touchCurrentX)); });
 
-      window.addEventListener('resize', () => { scrollTo(offset); });
+      window.addEventListener('resize', () => { scrollTo(getMaxOffset()); });
       // Start scrolled to the right (latest events visible)
       function scrollToEnd() { scrollTo(getMaxOffset()); }
       window.addEventListener('load', scrollToEnd);
