@@ -449,7 +449,7 @@
       padding: 1.25rem 0;
       border-bottom: 0.5px solid var(--border);
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 1rem;
       cursor: pointer;
       transition: background 0.2s;
@@ -499,7 +499,7 @@
       transition: max-height 0.4s var(--ease), opacity 0.3s;
       opacity: 0;
     }
-    .paper-item.open .paper-abstract-preview { max-height: 400px; opacity: 1; }
+    .paper-item.open .paper-abstract-preview { max-height: 800px; opacity: 1; }
     .paper-links {
       display: flex;
       gap: 0.75rem;
@@ -538,33 +538,112 @@
     }
     .paper-item.open .paper-expand-icon { transform: rotate(45deg); }
 
-    /* Hover preview image for ongoing research */
-    .paper-with-preview {
-      position: relative;
-    }
-    .paper-preview-img {
-      position: absolute;
-      right: 0;
-      bottom: calc(100% + 8px);
-      transform: translateY(6px) scale(0.96);
-      width: 260px;
+    /* Inline preview image shown when paper is expanded */
+    .paper-inline-img {
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
       border-radius: var(--r);
       overflow: hidden;
       border: 0.5px solid var(--border);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s var(--ease);
-      z-index: 8;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      max-width: 340px;
     }
-    .paper-with-preview:hover .paper-preview-img {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .paper-preview-img img {
+    .paper-inline-img img {
       width: 100%;
       height: auto;
       display: block;
+    }
+    .paper-inline-img figcaption {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink3);
+      text-align: center;
+      padding: 0.5rem 0.6rem;
+      line-height: 1.4;
+    }
+
+    /* Mini carousel for paper images */
+    .paper-carousel {
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      width: 340px;
+      max-width: 100%;
+      position: relative;
+    }
+    .paper-carousel-viewport {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 0.5px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      width: 100%;
+      transition: height 0.4s var(--ease);
+    }
+    .paper-carousel-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.4s var(--ease);
+      align-items: flex-start;
+    }
+    .paper-carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    .paper-carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .paper-carousel-slide figcaption {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink3);
+      text-align: center;
+      padding: 0.5rem 0.6rem;
+      line-height: 1.4;
+      background: var(--bg);
+    }
+    .paper-carousel-arrow {
+      position: absolute;
+      top: calc(50% - 18px);
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 0.5px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--ink2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.15s;
+      z-index: 2;
+    }
+    .paper-carousel-arrow:hover { border-color: var(--accent); color: var(--accent); }
+    .paper-carousel-arrow.left { left: -14px; }
+    .paper-carousel-arrow.right { right: -14px; }
+    .paper-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 0.5rem;
+    }
+    .paper-carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ink3);
+      opacity: 0.3;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .paper-carousel-dot.active {
+      opacity: 1;
+      background: var(--ink1);
     }
 
     /* ── FIELDS / CHIPS ─────────────────────────── */
@@ -1186,12 +1265,29 @@
       padding-top: 2px;
       flex-shrink: 0;
     }
+    .cv-content { flex: 1; min-width: 0; }
     .cv-role { font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--ink); }
     .cv-place {
       font-family: var(--sans);
       font-size: 12px;
       color: var(--ink3);
       margin-top: 1px;
+    }
+
+    /* ── CV LOGOS ──────────────────────────────────── */
+    .cv-logo {
+      margin-left: auto;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+    }
+    .cv-logo img {
+      height: 34px;
+      width: auto;
+      max-width: 80px;
+      object-fit: contain;
     }
 
     /* ── CONTACT ────────────────────────────────── */
@@ -1349,7 +1445,25 @@
       .nav-links { gap: 1.2rem; }
       .paper-item { grid-template-columns: 1fr; }
       .paper-expand-icon { display: none; }
-      .paper-preview-img { display: none; }
+
+      /* CV row on mobile: year + logo left, text right */
+      .cv-row {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.25rem 1rem;
+      }
+      .cv-year { grid-column: 1; grid-row: 1; text-align: center; }
+      .cv-logo {
+        grid-column: 1;
+        grid-row: 2;
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+      }
+      .cv-logo img { height: 22px; }
+      .cv-content { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+
       .tl-item { min-width: 110px; }
       .tl-popup { min-width: 200px; max-width: 240px; }
       .timeline-container { padding: 0 2.5rem; }
@@ -1443,36 +1557,54 @@
     <div class="research-subsection open reveal" id="doctoral-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('doctoral-section')">Ongoing Doctoral Research <span class="subsection-count">2</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
-        <div class="paper-item paper-with-preview" onclick="togglePaper(this)">
+        <div class="paper-item" onclick="togglePaper(this)">
           <div>
             <div class="paper-title">Organizing Humanitarian Aid in South Sudan</div>
             <div class="paper-coauthors">with IMPACT Initiatives. Supported by ReCIPE CEPR and SurveyCTO</div>
             <div class="paper-abstract-preview">
               How should we invest in and allocate humanitarian aid in conflict-affected economies? I combine six years of geospatial data on trade, aid, and conflict across South Sudanese marketplaces to study the spatial allocation of humanitarian aid.
+              <div class="paper-inline-img">
+                <img src="pictures/ssd_network_map.png" alt="South Sudan trade network map" />
+                <figcaption>Trade network across South Sudanese marketplaces, built from six years of geospatial data</figcaption>
+              </div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-prog">In Progress</span>
             <span class="paper-expand-icon">+</span>
           </div>
-          <div class="paper-preview-img">
-            <img src="pictures/ssd_network_map.png" alt="South Sudan trade network map" />
-          </div>
         </div>
-        <div class="paper-item paper-with-preview" onclick="togglePaper(this)">
+        <div class="paper-item" onclick="togglePaper(this)">
           <div>
             <div class="paper-title">Informality on the Intensive Margin in Zambia</div>
             <div class="paper-coauthors">Supported by IGC, UNU-WIDER, STEG-CEPR</div>
             <div class="paper-abstract-preview">
               Do formal firms operate informally, and why? I study the rollout of electronic invoicing in Zambia during a period of daily power shortages to understand how firms navigate formality when public infrastructure fails.
+              <div class="paper-carousel" onclick="event.stopPropagation()">
+                <div class="paper-carousel-viewport">
+                  <div class="paper-carousel-track">
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/beauty_salon_no_elec.jpg" alt="Beauty salon without electricity during loadshedding" />
+                      <figcaption>A beauty salon operating without electricity during loadshedding in Lusaka, Zambia</figcaption>
+                    </div>
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/zambia_smart_invoice.jpg" alt="Smart Invoice billboard ad in Lusaka, Zambia" />
+                      <figcaption>A Smart Invoice ad by Zambia Revenue Authority in Lusaka</figcaption>
+                    </div>
+                  </div>
+                </div>
+                <div class="paper-carousel-arrow left" onclick="slidePaperCarousel(this,-1)">&#8249;</div>
+                <div class="paper-carousel-arrow right" onclick="slidePaperCarousel(this,1)">&#8250;</div>
+                <div class="paper-carousel-dots">
+                  <div class="paper-carousel-dot active" onclick="goToPaperSlide(this,0)"></div>
+                  <div class="paper-carousel-dot" onclick="goToPaperSlide(this,1)"></div>
+                </div>
+              </div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-prog">In Progress</span>
             <span class="paper-expand-icon">+</span>
-          </div>
-          <div class="paper-preview-img">
-            <img src="pictures/stop_crossing.jpg" alt="Stop crossing in Zambia" />
           </div>
         </div>
       </div>
@@ -1482,28 +1614,65 @@
     <div class="research-subsection reveal reveal-delay-1" id="policy-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('policy-section')">Policy Contributions <span class="subsection-count">2</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
-        <div class="paper-item no-expand">
+        <div class="paper-item" onclick="togglePaper(this)">
           <div>
             <div class="paper-title">E-invoicing adoption under loadshedding in Zambia</div>
             <div class="paper-coauthors">with S. Jackson &mdash; IGC Policy Brief, 2025</div>
             <div class="paper-links always-visible">
               <a href="https://www.theigc.org/publications/e-invoicing-adoption-under-loadshedding-zambia" class="paper-link-btn" target="_blank">IGC Brief &#8599;</a>
             </div>
+            <div class="paper-abstract-preview">
+              Since 2024, all Zambian firms must use electronic invoices for VAT reporting. Based on interviews with 61 firms, we study how daily loadshedding disrupts adoption: firms unable to issue smart invoices lose formal customers and revert to informal trade, even as high awareness and compliance efforts by the Zambia Revenue Authority promise long-term gains in tax revenue.
+              <div class="paper-carousel" onclick="event.stopPropagation()">
+                <div class="paper-carousel-viewport">
+                  <div class="paper-carousel-track">
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/lusaka_firms_locations.png" alt="Map of surveyed firms in Lusaka" />
+                      <figcaption>Locations of 61 surveyed firms across Lusaka, Zambia</figcaption>
+                    </div>
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/smart invoice_adoption_funnel.png" alt="Smart Invoice adoption funnel" />
+                      <figcaption>Smart Invoice adoption funnel: from 61 surveyed firms, 22 actively use the system</figcaption>
+                    </div>
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/informality_barchart_backup_loadshedding.png" alt="Formal trade decline under loadshedding" />
+                      <figcaption>54% of Smart Invoice users lost formal customers due to loadshedding &mdash; back-up power proved too unreliable to help</figcaption>
+                    </div>
+                  </div>
+                </div>
+                <div class="paper-carousel-arrow left" onclick="slidePaperCarousel(this,-1)">&#8249;</div>
+                <div class="paper-carousel-arrow right" onclick="slidePaperCarousel(this,1)">&#8250;</div>
+                <div class="paper-carousel-dots">
+                  <div class="paper-carousel-dot active" onclick="goToPaperSlide(this,0)"></div>
+                  <div class="paper-carousel-dot" onclick="goToPaperSlide(this,1)"></div>
+                  <div class="paper-carousel-dot" onclick="goToPaperSlide(this,2)"></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-policy">Policy Brief</span>
+            <span class="paper-expand-icon">+</span>
           </div>
         </div>
-        <div class="paper-item no-expand">
+        <div class="paper-item" onclick="togglePaper(this)">
           <div>
             <div class="paper-title">Trade Finance in West Africa</div>
             <div class="paper-coauthors">IFC&ndash;WTO &mdash; Policy Report, 2022</div>
             <div class="paper-links always-visible">
               <a href="https://www.wto.org/english/res_e/publications_e/tfinwestafrica_e.htm" class="paper-link-btn" target="_blank">Report &#8599;</a>
             </div>
+            <div class="paper-abstract-preview">
+              A joint IFC&ndash;WTO study surveying banks across C&ocirc;te d'Ivoire, Ghana, Nigeria, and Senegal to assess trade finance gaps and estimate the potential boost to trade from closing them.
+              <div class="paper-inline-img">
+                <img src="pictures/tradefinance_boost_trade.png" alt="Projected trade cost reductions in ECOWAS" />
+                <figcaption>Expanding trade finance coverage could raise ECOWAS merchandise trade by 8&ndash;16%, with the strongest boost to intra-regional flows</figcaption>
+              </div>
+            </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-policy">Policy Report</span>
+            <span class="paper-expand-icon">+</span>
           </div>
         </div>
       </div>
@@ -1790,6 +1959,7 @@
               <div class="cv-role">PhD in Economics</div>
               <div class="cv-place">Geneva Graduate Institute</div>
             </div>
+            <div class="cv-logo"><img src="pictures/logo_simple_GenevaGraduateInstitute_2022_color_RGB.jpg" alt="Geneva Graduate Institute" /></div>
           </div>
           <div class="cv-row">
             <div class="cv-year">2022 &ndash; 23</div>
@@ -1797,6 +1967,7 @@
               <div class="cv-role">Trade Information Specialist</div>
               <div class="cv-place">International Trade Centre (UNCTAD/WTO)</div>
             </div>
+            <div class="cv-logo"><img src="pictures/itc logo.svg" alt="International Trade Centre" /></div>
           </div>
           <div class="cv-row">
             <div class="cv-year">2021 &ndash; 22</div>
@@ -1804,6 +1975,7 @@
               <div class="cv-role">Research Assistant</div>
               <div class="cv-place">World Trade Organization</div>
             </div>
+            <div class="cv-logo"><img src="pictures/wto logo.svg" alt="World Trade Organization" /></div>
           </div>
           <div class="cv-row">
             <div class="cv-year">2020 &ndash; 22</div>
@@ -1811,6 +1983,7 @@
               <div class="cv-role">MSc Economics</div>
               <div class="cv-place">Geneva Graduate Institute</div>
             </div>
+            <div class="cv-logo"><img src="pictures/logo_simple_GenevaGraduateInstitute_2022_color_RGB.jpg" alt="Geneva Graduate Institute" /></div>
           </div>
           <div class="cv-row">
             <div class="cv-year">2017 &ndash; 20</div>
@@ -1818,6 +1991,7 @@
               <div class="cv-role">BSc Economics</div>
               <div class="cv-place">HEC Lausanne</div>
             </div>
+            <div class="cv-logo"><img src="pictures/UNIL Logo.webp" alt="HEC Lausanne – UNIL" /></div>
           </div>
         </div>
       </div>
@@ -2039,8 +2213,51 @@
       if (el.classList.contains('no-expand')) return;
       const wasOpen = el.classList.contains('open');
       document.querySelectorAll('.paper-item.open').forEach(p => p.classList.remove('open'));
-      if (!wasOpen) el.classList.add('open');
+      if (!wasOpen) {
+        el.classList.add('open');
+        setTimeout(function() {
+          el.querySelectorAll('.paper-carousel').forEach(function(c) {
+            updateCarouselHeight(c, 0);
+          });
+        }, 50);
+      }
     }
+
+    /* ── PAPER MINI CAROUSEL ───────────────────── */
+    function updateCarouselHeight(carousel, idx) {
+      const viewport = carousel.querySelector('.paper-carousel-viewport');
+      const slides = carousel.querySelectorAll('.paper-carousel-slide');
+      if (slides[idx]) {
+        viewport.style.height = slides[idx].scrollHeight + 'px';
+      }
+    }
+    function slidePaperCarousel(arrow, dir) {
+      const carousel = arrow.closest('.paper-carousel');
+      const track = carousel.querySelector('.paper-carousel-track');
+      const dots = carousel.querySelectorAll('.paper-carousel-dot');
+      const total = track.children.length;
+      let current = Math.round(Math.abs(parseFloat(track.style.transform.replace('translateX(','')) || 0) / 100);
+      let next = current + dir;
+      if (next < 0) next = total - 1;
+      if (next >= total) next = 0;
+      track.style.transform = 'translateX(-' + (next * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === next));
+      updateCarouselHeight(carousel, next);
+    }
+    function goToPaperSlide(dot, idx) {
+      const carousel = dot.closest('.paper-carousel');
+      const track = carousel.querySelector('.paper-carousel-track');
+      const dots = carousel.querySelectorAll('.paper-carousel-dot');
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      updateCarouselHeight(carousel, idx);
+    }
+    /* Init all carousels to first slide height */
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.paper-carousel').forEach(function(c) {
+        updateCarouselHeight(c, 0);
+      });
+    });
 
     /* ── TIMELINE ARROW NAV ───────────────────── */
     (function() {
