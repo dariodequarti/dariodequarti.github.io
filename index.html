@@ -499,7 +499,7 @@
       transition: max-height 0.4s var(--ease), opacity 0.3s;
       opacity: 0;
     }
-    .paper-item.open .paper-abstract-preview { max-height: 800px; opacity: 1; }
+    .paper-item.open .paper-abstract-preview { max-height: 1200px; opacity: 1; }
     .paper-links {
       display: flex;
       gap: 0.75rem;
@@ -1443,7 +1443,8 @@
       /* Other sections */
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .nav-links { gap: 1.2rem; }
-      .paper-item { grid-template-columns: 1fr; }
+      .paper-item { grid-template-columns: minmax(0, 1fr); }
+      .paper-item > div { min-width: 0; }
       .paper-expand-icon { display: none; }
 
       /* CV row on mobile: year + logo left, text right */
@@ -1512,7 +1513,7 @@
           with a focus on <strong>development economics and trade</strong>.
         </p>
         <p class="hero-bio">
-          Supervised by <a href="https://www.juliacajalgrossi.com/" target="_blank"><strong>Pr. Cajal-Grossi</strong></a>
+          Supervised by <a href="https://www.juliacajalgrossi.com/" target="_blank"><strong>Pr. Cajal Grossi</strong></a>
           and <a href="https://clauderaisaro.github.io/" target="_blank"><strong>Pr. Raisaro</strong></a>.
           Previously worked at the <strong>WTO</strong> and <strong>International Trade Centre</strong>.
         </p>
@@ -1937,7 +1938,7 @@
       <div class="about-text reveal">
         <p>
           I'm a third-year PhD candidate in Economics at the <strong>Geneva Graduate Institute</strong>,
-          supervised by <a href="https://www.juliacajalgrossi.com/" target="_blank"><strong>Pr. Cajal-Grossi</strong></a>
+          supervised by <a href="https://www.juliacajalgrossi.com/" target="_blank"><strong>Pr. Cajal Grossi</strong></a>
           and <a href="https://clauderaisaro.github.io/" target="_blank"><strong>Pr. Raisaro</strong></a>.
           My research interests are in <strong>development economics and trade</strong>.
         </p>
@@ -2221,8 +2222,19 @@
     function updateCarouselHeight(carousel, idx) {
       const viewport = carousel.querySelector('.paper-carousel-viewport');
       const slides = carousel.querySelectorAll('.paper-carousel-slide');
-      if (slides[idx]) {
+      if (!slides[idx]) return;
+      var img = slides[idx].querySelector('img');
+      var caption = slides[idx].querySelector('figcaption');
+      var captionH = caption ? caption.scrollHeight : 0;
+      if (img && img.naturalHeight && img.naturalWidth) {
+        var imgH = img.naturalHeight / img.naturalWidth * slides[idx].offsetWidth;
+        viewport.style.height = Math.ceil(imgH + captionH) + 'px';
+      } else {
         viewport.style.height = slides[idx].scrollHeight + 'px';
+      }
+      /* Recalculate once image loads if it wasn't ready */
+      if (img && !img.complete) {
+        img.onload = function() { updateCarouselHeight(carousel, idx); };
       }
     }
     function slidePaperCarousel(arrow, dir) {
