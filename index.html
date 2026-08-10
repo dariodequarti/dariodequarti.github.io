@@ -1012,17 +1012,6 @@
       border-top: 0.5px solid rgba(255,255,255,0.05);
     }
 
-    /* ── SCROLL ANIMATIONS ──────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
-    .reveal.in { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
     /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 768px) {
       /* The hero shows the name directly below, so the nav copy is redundant
@@ -1210,7 +1199,7 @@
     </section>
     <!-- NEWS -->
     <div class="news-bar" style="padding-bottom:clamp(1rem,2vw,1.5rem);">
-      <div class="news-box reveal">
+      <div class="news-box">
         <span class="news-badge">New</span>
         <div class="news-text">
           In October 2026, I'll be presenting at the <strong>DevEconMeet Conference</strong> in Palermo.
@@ -1221,12 +1210,12 @@
   </div>
   <!-- RESEARCH -->
   <section id="research">
-    <div class="section-header reveal">
+    <div class="section-header">
       <h2>Research</h2>
     </div>
 
     <!-- Ongoing Doctoral Research -->
-    <div class="research-subsection open reveal" id="doctoral-section">
+    <div class="research-subsection open" id="doctoral-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('doctoral-section')">Ongoing Doctoral Research <span class="subsection-count">2</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
         <div class="paper-item">
@@ -1311,7 +1300,7 @@
     </div>
 
     <!-- Policy Contributions -->
-    <div class="research-subsection reveal reveal-delay-1" id="policy-section">
+    <div class="research-subsection" id="policy-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('policy-section')">Policy Contributions <span class="subsection-count">2</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
         <div class="paper-item">
@@ -1393,7 +1382,7 @@
     </div>
 
     <!-- Pre-Doctoral Working Paper -->
-    <div class="research-subsection reveal reveal-delay-2" id="predoc-section">
+    <div class="research-subsection" id="predoc-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('predoc-section')">Pre-Doctoral Working Paper <span class="subsection-count">1</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
         <div class="paper-item">
@@ -1420,10 +1409,10 @@
 
   <!-- TEACHING -->
   <section id="teaching">
-    <div class="section-header reveal">
+    <div class="section-header">
       <h2>Teaching</h2>
     </div>
-    <div class="teaching-layout reveal">
+    <div class="teaching-layout">
       <div class="cv-block">
         <div class="cv-row">
           <div class="cv-year">2025 &ndash;</div>
@@ -1480,10 +1469,10 @@
 
   <!-- FIELDWORK -->
   <section id="fieldwork" style="background:var(--bg);">
-    <div class="section-header reveal">
+    <div class="section-header">
       <h2>Research Life</h2>
     </div>
-    <div class="carousel-wrapper reveal">
+    <div class="carousel-wrapper">
       <button class="carousel-arrow carousel-arrow-left" id="fieldLeft" aria-label="Previous photo">&#8249;</button>
       <button class="carousel-arrow carousel-arrow-right" id="fieldRight" aria-label="Next photo">&#8250;</button>
       <div class="carousel-track" id="fieldTrack">
@@ -1521,14 +1510,14 @@
 
   <!-- BEYOND RESEARCH -->
   <section id="football">
-    <div class="section-header reveal">
+    <div class="section-header">
       <h2>Beyond Research</h2>
     </div>
-    <p class="reveal" style="color:var(--ink2); font-size:1rem; max-width:600px; margin-bottom:2rem;">
+    <p style="color:var(--ink2); font-size:1rem; max-width:600px; margin-bottom:2rem;">
       In my free time, I enjoy refereeing football. I officiated at the national
       level in France until 2025, and I now referee in Switzerland.
     </p>
-    <div class="carousel-wrapper reveal reveal-delay-1">
+    <div class="carousel-wrapper">
       <button class="carousel-arrow carousel-arrow-left" id="carLeft" aria-label="Previous photo">&#8249;</button>
       <button class="carousel-arrow carousel-arrow-right" id="carRight" aria-label="Next photo">&#8250;</button>
       <div class="carousel-track" id="carouselTrack">
@@ -1811,12 +1800,6 @@
 
     initCarousel('carouselTrack', 'carCaption', 'carLeft', 'carRight');
     initCarousel('fieldTrack', 'fieldCaption', 'fieldLeft', 'fieldRight');
-
-    /* ── SCROLL REVEAL ────────────────────────── */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     /* ── NAV SHADOW ───────────────────────────── */
     window.addEventListener('scroll', () => {
