@@ -762,9 +762,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 340px;
+      height: 300px;
       overflow: hidden;
       margin-top: 1rem;
+      /* Vertical swipes must still scroll the page; only horizontal drags
+         are intercepted by the swipe handler. */
+      touch-action: pan-y;
     }
     .carousel-track {
       position: relative;
@@ -779,8 +782,8 @@
        no perspective, minimal corner radius. */
     .carousel-slide {
       position: absolute;
-      width: 380px;
-      height: 280px;
+      width: 340px;
+      height: 240px;
       border-radius: 2px;
       overflow: hidden;
       border: 0.5px solid var(--border);
@@ -1099,18 +1102,23 @@
       .cv-logo img { height: 22px; }
       .cv-content { grid-column: 2; grid-row: 1 / 3; align-self: center; }
 
-      .carousel-slide { width: 280px; height: 200px; }
-      .carousel-wrapper { height: 260px; }
+      /* One photo at a time on a phone. The slide takes almost the full width
+         and the neighbours are pushed clear of the viewport, so a swipe reads
+         as a single image changing rather than a strip sliding.
+         The offsets must stay above (viewport + slide) / (2 x slide) or the
+         neighbour reappears at the edge; 130% holds down to 320px wide. */
+      .carousel-slide { width: min(340px, 86vw); height: min(240px, 61vw); }
+      .carousel-wrapper { height: min(260px, 66vw); }
+      .carousel-slide[data-pos="1"]  { transform: translateX(130%); }
+      .carousel-slide[data-pos="-1"] { transform: translateX(-130%); }
+      .carousel-slide[data-pos="2"]  { transform: translateX(260%); }
+      .carousel-slide[data-pos="-2"] { transform: translateX(-260%); }
+      .carousel-arrow-left  { left: 0.25rem; }
+      .carousel-arrow-right { right: 0.25rem; }
     }
     @media (max-width: 480px) {
       .nav-links .hide-mobile { display: none; }
       h1 { font-size: 1.4rem; }
-      .carousel-slide { width: 220px; height: 160px; }
-      .carousel-wrapper { height: 220px; }
-      /* Kept flat here too: no scale, just a tighter offset so a sliver of
-         the neighbouring slide stays visible on a narrow screen. */
-      .carousel-slide[data-pos="1"] { transform: translateX(88%); }
-      .carousel-slide[data-pos="-1"] { transform: translateX(-88%); }
     }
   </style>
 </head>
@@ -1456,35 +1464,35 @@
     <div class="section-header reveal">
       <h2>Research Life</h2>
     </div>
-    <div class="carousel-wrapper reveal" style="height:300px;">
+    <div class="carousel-wrapper reveal">
       <button class="carousel-arrow carousel-arrow-left" id="fieldLeft" aria-label="Previous photo">&#8249;</button>
       <button class="carousel-arrow carousel-arrow-right" id="fieldRight" aria-label="Next photo">&#8250;</button>
       <div class="carousel-track" id="fieldTrack">
-        <div class="carousel-slide" data-caption="IGC Roundtable on distributed solar and SMEs, Zambia" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="IGC Roundtable on distributed solar and SMEs, Zambia">
           <img src="pictures/roundtable.jpg" alt="IGC Roundtable discussion in Zambia" />
         </div>
-        <div class="carousel-slide" data-caption="Presenting research methods at an IGC workshop" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="Presenting research methods at an IGC workshop">
           <img src="pictures/presenting.jpg" alt="Presenting at IGC Research Methods Workshop" />
         </div>
-        <div class="carousel-slide" data-caption="South Sudan trade network map" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="South Sudan trade network map">
           <img src="pictures/ssd_network_map.jpg" alt="South Sudan trade network map" />
         </div>
-        <div class="carousel-slide" data-caption="E-invoicing ad in Lusaka, Zambia" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="E-invoicing ad in Lusaka, Zambia">
           <img src="pictures/zambia_smart_invoice.jpg" alt="E-invoicing advertisement in Lusaka, Zambia" style="object-fit:contain;background:var(--bg2);" />
         </div>
-        <div class="carousel-slide" data-caption="Loadshedding impacts SMEs activity, here in a beauty salon" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="Loadshedding impacts SMEs activity, here in a beauty salon">
           <img src="pictures/beauty_salon_no_elec.jpg" alt="Beauty salon without electricity during loadshedding" />
         </div>
-        <div class="carousel-slide" data-caption="Victoria Falls, Zambia" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="Victoria Falls, Zambia">
           <img src="pictures/vic_falls.jpg" alt="Victoria Falls, Zambia" />
         </div>
-        <div class="carousel-slide" data-caption="Lunch break during fieldwork in Zambia" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="Lunch break during fieldwork in Zambia">
           <img src="pictures/nshima.jpg" alt="Lunch with colleagues in Zambia" />
         </div>
-        <div class="carousel-slide" data-caption="50 billion Zimbabwe dollars" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="50 billion Zimbabwe dollars">
           <img src="pictures/50_billion.jpg" alt="50 billion Zimbabwe dollar bill" style="object-fit:contain;background:var(--bg2);" />
         </div>
-        <div class="carousel-slide" data-caption="Aurora Borealis seen during a research stay in Finland" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="Aurora Borealis seen during a research stay in Finland">
           <img src="pictures/finland_aurora.jpg" alt="Aurora borealis over pine forest in Finland" style="object-fit:contain;background:var(--bg2);" />
         </div>
       </div>
@@ -1498,8 +1506,8 @@
       <h2>Beyond Research</h2>
     </div>
     <p class="reveal" style="color:var(--ink2); font-size:1rem; max-width:600px; margin-bottom:2rem;">
-      My passion is to referee football. I've been a football ref in France at
-      the national level until 2025, and I am still refereeing in Switzerland.
+      In my free time, I enjoy refereeing football. I officiated at the national
+      level in France until 2025, and I now referee in Switzerland.
     </p>
     <div class="carousel-wrapper reveal reveal-delay-1">
       <button class="carousel-arrow carousel-arrow-left" id="carLeft" aria-label="Previous photo">&#8249;</button>
@@ -1653,13 +1661,84 @@
         update();
       }
 
-      leftBtn.addEventListener('click', () => goTo(current - 1));
-      rightBtn.addEventListener('click', () => goTo(current + 1));
+      /* ── Autoplay ──
+         Advances every 3s. Any manual navigation restarts the clock rather
+         than fighting it, so a tap is never undone half a second later.
+         Paused while off-screen or on a hidden tab, so the carousel is on
+         the slide the reader last saw when they come back. */
+      const DELAY = 3000;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let timer = null;
+      let onScreen = false;
+      const wrapper = track.closest('.carousel-wrapper');
+
+      function stop() { clearInterval(timer); timer = null; }
+      function play() {
+        /* onScreen is checked here, not only at the observer, so that the
+           hover and tab-visibility handlers cannot start a carousel the
+           reader is nowhere near. */
+        if (reduced || timer || !onScreen || document.hidden) return;
+        timer = setInterval(() => goTo(current + 1), DELAY);
+      }
+      function restart() { stop(); play(); }
+
+      /* Manual navigation goes through here so every path resets the timer. */
+      function step(n) { goTo(n); restart(); }
+
+      leftBtn.addEventListener('click', () => step(current - 1));
+      rightBtn.addEventListener('click', () => step(current + 1));
       slides.forEach((slide, i) => {
         slide.addEventListener('click', () => {
-          if (slide.getAttribute('data-pos') !== '0') goTo(i);
+          if (slide.getAttribute('data-pos') !== '0') step(i);
         });
       });
+
+      /* Hovering usually means the reader is looking at this one. */
+      wrapper.addEventListener('mouseenter', stop);
+      wrapper.addEventListener('mouseleave', play);
+
+      /* ── Touch swipe ──
+         Horizontal drag past the threshold changes slide. A mostly-vertical
+         drag is left alone so the page still scrolls normally. */
+      const THRESHOLD = 40;
+      let startX = 0, startY = 0, tracking = false;
+
+      wrapper.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        tracking = true;
+        stop();
+      }, { passive: true });
+
+      wrapper.addEventListener('touchend', (e) => {
+        if (!tracking) return;
+        tracking = false;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        /* Only act when the gesture is more horizontal than vertical. */
+        if (Math.abs(dx) > THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+          goTo(dx < 0 ? current + 1 : current - 1);
+        }
+        play();
+      }, { passive: true });
+
+      wrapper.addEventListener('touchcancel', () => { tracking = false; play(); }, { passive: true });
+
+      /* Only run while actually on screen. */
+      const vis = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          onScreen = en.isIntersecting;
+          onScreen ? play() : stop();
+        });
+      }, { threshold: 0.25 });
+      vis.observe(wrapper);
+
+      document.addEventListener('visibilitychange', () => {
+        document.hidden ? stop() : play();
+      });
+
       update();
     }
 
