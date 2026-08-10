@@ -88,6 +88,10 @@
       --ink3:      #4b5158;
       --accent:    #2a4a7f;
       --accent2:   #c8502a;
+      /* Dark goldenrod for expand/collapse controls. Reads as interactive
+         without competing with the near-black headings. */
+      --gold:       #8b6914;
+      --gold-hover: #6d520f;
       --border:    rgba(20,22,26,0.13);
       --border2:   rgba(20,22,26,0.06);
       /* Karla throughout, one family differentiated by weight and size only.
@@ -111,6 +115,9 @@
       --ink3:      #9aa3ac;
       --accent:    #6a9fd8;
       --accent2:   #e8784a;
+      /* Lifted for the dark background; #8b6914 is unreadable on near-black. */
+      --gold:       #d9ab4a;
+      --gold-hover: #ecc36e;
       --border:    rgba(233,235,238,0.11);
       --border2:   rgba(233,235,238,0.05);
     }
@@ -574,7 +581,9 @@
       font-size: 1rem;
       font-weight: 600;
       letter-spacing: 0.01em;
-      color: var(--ink3);
+      /* Gold, not grey. These are controls, and colouring them apart from
+         the body text is what tells the eye they can be clicked. */
+      color: var(--gold);
       background: none;
       border: none;
       padding: 0;
@@ -585,7 +594,7 @@
       gap: 0.35rem;
       transition: color 0.2s var(--ease);
     }
-    .paper-desc-toggle:hover { color: var(--accent); }
+    .paper-desc-toggle:hover { color: var(--gold-hover); }
     .paper-desc-sign {
       font-family: var(--mono);
       font-size: 15px;
@@ -1223,7 +1232,6 @@
         <div class="paper-item">
           <div>
             <div class="paper-title">Humanitarian Aid and Trade in South Sudan</div>
-            <div class="paper-coauthors">with IMPACT Initiatives. Supported by ReCIPE CEPR and SurveyCTO</div>
             <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
               <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
             </button>
@@ -1263,7 +1271,6 @@
         <div class="paper-item">
           <div>
             <div class="paper-title">Informality among Formal Firms in Zambia</div>
-            <div class="paper-coauthors">Supported by IGC, UNU-WIDER, STEG-CEPR</div>
             <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
               <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
             </button>
