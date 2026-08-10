@@ -177,13 +177,43 @@
       transition: color 0.2s var(--ease);
     }
     .nav-name:hover { color: var(--accent); }
-    .nav-name span { color: var(--accent); }
     .nav-links {
       display: flex;
       align-items: center;
       gap: 2rem;
       list-style: none;
+      margin-left: auto;
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-left: 2rem;
+    }
+    /* Hamburger. Hidden on desktop, where the links sit inline. */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: transform 0.25s var(--ease), opacity 0.15s;
+    }
+    /* Open state folds the bars into a cross. */
+    nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
     .nav-links a {
       font-family: var(--sans);
       font-size: 0.875rem;
@@ -1016,7 +1046,38 @@
     @media (max-width: 768px) {
       /* The hero shows the name directly below, so the nav copy is redundant
          here and would otherwise collide with the nav links. */
-      .nav-name { display: none; }
+      /* Phones get a hamburger instead of inline links. The name stays put as
+         the one-tap way back to the top; the sections live in the panel. */
+      nav { padding: 0 1.25rem; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 56px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin-left: 0;
+        padding: 0 1.25rem;
+        background: var(--bg);
+        border-bottom: 0.5px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s var(--ease), padding 0.3s var(--ease);
+      }
+      nav.nav-open .nav-links {
+        max-height: 260px;
+        padding: 0.4rem 1.25rem 0.9rem;
+      }
+      .nav-links a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: 1rem;
+        border-bottom: 0.5px solid var(--border2);
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+      /* The sliding underline is a pointer affordance; pointless in a list. */
+      .nav-links a::after { display: none; }
+      .nav-right { margin-left: auto; }
       /* Mobile hero */
       #home {
         display: flex;
@@ -1084,7 +1145,7 @@
       .teaching-layout { flex-direction: column; align-items: center; }
 
       /* Other sections */
-      .nav-links { gap: 1.2rem; }
+      .nav-links { gap: 0.9rem; }
       .paper-item { grid-template-columns: minmax(0, 1fr); }
       .paper-item > div { min-width: 0; }
 
@@ -1127,8 +1188,10 @@
       .paper-carousel-arrow.right { right: 6px; }
     }
     @media (max-width: 480px) {
-      .nav-links .hide-mobile { display: none; }
       h1 { font-size: 1.4rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { padding: 0 1rem; }
+      nav.nav-open .nav-links { padding: 0.4rem 1rem 0.9rem; }
     }
   </style>
 </head>
@@ -1136,16 +1199,22 @@
 
   <!-- NAV -->
   <nav id="nav">
+    <!-- The name is always visible and always links home. -->
     <a class="nav-name" href="#home">Dario De Quarti</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
+      <!-- Points at the intro rather than the PDF: the CV button lives there,
+           so the reader chooses to download instead of being handed a file. -->
+      <li><a href="#home">About and CV</a></li>
       <li><a href="#research">Research</a></li>
-      <li class="hide-mobile"><a href="#teaching">Teaching</a></li>
-      <li><a href="cv_website.pdf" target="_blank">CV</a></li>
+      <li><a href="#teaching">Teaching</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li>
-        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
-      </li>
     </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -1800,6 +1869,46 @@
 
     initCarousel('carouselTrack', 'carCaption', 'carLeft', 'carRight');
     initCarousel('fieldTrack', 'fieldCaption', 'fieldLeft', 'fieldRight');
+
+    /* ── MOBILE MENU ──────────────────────────────
+       The panel is CSS-driven (max-height on nav.nav-open), so if this script
+       ever fails the links stay reachable inline rather than disappearing. */
+    (function() {
+      const nav = document.getElementById('nav');
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+
+      function setOpen(open) {
+        nav.classList.toggle('nav-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        setOpen(!nav.classList.contains('nav-open'));
+      });
+
+      /* Close after picking a destination, or the panel covers what you jumped to. */
+      links.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') setOpen(false);
+      });
+
+      /* Tapping the name is a navigation too. */
+      document.querySelector('.nav-name').addEventListener('click', function() { setOpen(false); });
+
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+
+      /* Leaving mobile width with the panel open would strand the open class. */
+      window.matchMedia('(min-width: 769px)').addEventListener('change', function(e) {
+        if (e.matches) setOpen(false);
+      });
+    })();
 
     /* ── NAV SHADOW ───────────────────────────── */
     window.addEventListener('scroll', () => {
