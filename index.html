@@ -11,10 +11,10 @@
     gtag('js', new Date());
     gtag('config', 'G-R8WP6WJK24');
   </script>
-  <title>Dario De Quarti — PhD Candidate in Economics</title>
-  <meta name="description" content="Dario De Quarti — PhD Candidate in Economics at the Geneva Graduate Institute. Research in development economics, trade, informality, and humanitarian aid. Zambia, South Sudan." />
+  <title>Dario De Quarti - PhD Candidate in Economics</title>
+  <meta name="description" content="Dario De Quarti - PhD Candidate in Economics at the Geneva Graduate Institute. Research in development economics, trade, informality, and humanitarian aid. Zambia, South Sudan." />
   <meta name="keywords" content="Dario De Quarti, economist, PhD, Geneva Graduate Institute, development economics, trade, informality, humanitarian aid, Zambia, South Sudan, IHEID" />
-  <meta property="og:title" content="Dario De Quarti — PhD Candidate in Economics" />
+  <meta property="og:title" content="Dario De Quarti - PhD Candidate in Economics" />
   <meta property="og:description" content="PhD Candidate at the Geneva Graduate Institute. Research in development economics and trade." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dariodequarti.github.io" />
@@ -23,7 +23,7 @@
   <link rel="canonical" href="https://dariodequarti.github.io/" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Dario De Quarti — PhD Candidate in Economics" />
+  <meta name="twitter:title" content="Dario De Quarti - PhD Candidate in Economics" />
   <meta name="twitter:image" content="https://dariodequarti.github.io/pictures/foto_dequarti.jpg" />
   <!-- Schema.org structured data -->
   <script type="application/ld+json">
@@ -53,13 +53,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Dario De Quarti — PhD Candidate in Economics",
+    "name": "Dario De Quarti - PhD Candidate in Economics",
     "url": "https://dariodequarti.github.io",
     "hasPart": [
       { "@type": "WebPageElement", "name": "Research", "url": "https://dariodequarti.github.io/#research" },
-      { "@type": "WebPageElement", "name": "Recent", "url": "https://dariodequarti.github.io/#timeline" },
-      { "@type": "WebPageElement", "name": "About", "url": "https://dariodequarti.github.io/#about" },
       { "@type": "WebPageElement", "name": "Teaching", "url": "https://dariodequarti.github.io/#teaching" },
+      { "@type": "WebPageElement", "name": "CV", "url": "https://dariodequarti.github.io/cv_website.pdf" },
       { "@type": "WebPageElement", "name": "Contact", "url": "https://dariodequarti.github.io/#contact" }
     ]
   }
@@ -67,41 +66,61 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ── TOKENS ─────────────────────────────────── */
     :root {
+      /* Neutral palette. The inks are cooled to match: the previous warm
+         browns were tuned for a cream background and read as dingy on white.
+         Previous (warm) values:
+           --bg: #faf6ee;  --bg2: #f3eddf;
+           --ink: #1a1814; --ink2: #5e5548; --ink3: #9a9080;
+           --border: rgba(26,24,20,0.12); --border2: rgba(26,24,20,0.06);   */
+      /* Cream taken from the live site's nav bar. --bg2 sits one step darker
+         so panels and letterboxed images separate from the page. */
       --bg:        #faf6ee;
       --bg2:       #f3eddf;
-      --ink:       #1a1814;
-      --ink2:      #5e5548;
-      --ink3:      #9a9080;
+      --ink:       #0a0a0b;
+      --ink2:      #22252a;
+      /* --ink3 is the muted tone: role line, place names, captions, notes.
+         Kept dark enough to stay legible on the cream background. The footer
+         sits on --ink and so sets its own light grey instead. */
+      --ink3:      #4b5158;
       --accent:    #2a4a7f;
       --accent2:   #c8502a;
-      --border:    rgba(26,24,20,0.12);
-      --border2:   rgba(26,24,20,0.06);
-      --serif:     'Cormorant Garamond', Georgia, serif;
-      --mono:      'DM Mono', monospace;
-      --sans:      'Karla', system-ui, sans-serif;
+      --border:    rgba(20,22,26,0.13);
+      --border2:   rgba(20,22,26,0.06);
+      /* Karla throughout, one family differentiated by weight and size only.
+         The three role names are kept so a multi-typeface system could be
+         restored by editing only these lines. Original values were:
+           --serif: 'Cormorant Garamond', Georgia, serif;
+           --mono:  'DM Mono', monospace;
+           --sans:  'Karla', system-ui, sans-serif;                          */
+      --karla:     'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --serif:     var(--karla);
+      --mono:      var(--karla);
+      --sans:      var(--karla);
       --r:         6px;
       --ease:      cubic-bezier(0.22, 1, 0.36, 1);
     }
     [data-theme="dark"] {
-      --bg:        #12100a;
-      --bg2:       #1c1810;
-      --ink:       #f0ece0;
-      --ink2:      #a09a8e;
-      --ink3:      #605c55;
+      --bg:        #0f1113;
+      --bg2:       #191c1f;
+      --ink:       #e9ebee;
+      --ink2:      #9aa1a9;
+      --ink3:      #9aa3ac;
       --accent:    #6a9fd8;
       --accent2:   #e8784a;
-      --border:    rgba(240,236,224,0.1);
-      --border2:   rgba(240,236,224,0.05);
+      --border:    rgba(233,235,238,0.11);
+      --border2:   rgba(233,235,238,0.05);
     }
 
     /* ── RESET ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    html { scroll-behavior: smooth; font-size: clamp(16px, 1vw, 18px); }
+    /* Root size drives every rem below. Raised for large desktop screens,
+       where the old 16-18px ceiling left body copy looking undersized. */
+    html { scroll-behavior: smooth; font-size: clamp(16px, 1.15vw, 19px); }
     body {
       background: var(--bg);
       color: var(--ink);
@@ -135,19 +154,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      /* Must be kept in sync with --bg by hand: rgba() cannot read a hex var. */
       background: rgba(250,246,238,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid var(--border);
       transition: background 0.3s, border-color 0.3s;
     }
-    [data-theme="dark"] nav { background: rgba(17,16,8,0.88); }
+    [data-theme="dark"] nav { background: rgba(15,17,19,0.88); }
     .nav-name {
       font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink2);
-      letter-spacing: 0.02em;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      transition: color 0.2s var(--ease);
     }
+    .nav-name:hover { color: var(--accent); }
     .nav-name span { color: var(--accent); }
     .nav-links {
       display: flex;
@@ -157,7 +179,7 @@
     }
     .nav-links a {
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 0.875rem;
       font-weight: 500;
       color: var(--ink2);
       letter-spacing: 0.02em;
@@ -193,25 +215,15 @@
       min-height: auto;
       overflow: hidden;
     }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background: url('pictures/geneva_grad_bckg.jpg') center center / cover no-repeat;
-      opacity: 0.08;
-      filter: grayscale(30%);
-      transition: opacity 0.3s;
-    }
-    [data-theme="dark"] .hero-bg {
-      opacity: 0.06;
-      filter: grayscale(40%) brightness(0.8);
-    }
     #home {
       position: relative;
       z-index: 1;
       min-height: auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      /* The photo column is sized to the photo, not to half the page. With
+         two equal columns the portrait sat right-aligned in a 638px slot and
+         left ~500px of dead space between the text and the photo. */
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
       padding: 0 clamp(1.5rem, 5vw, 5rem);
       padding-top: 56px;
@@ -220,40 +232,32 @@
       margin: 0 auto;
     }
     .hero-left { padding: 4rem 0; }
-    .hero-tag {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .hero-tag::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
     h1 {
       font-family: var(--serif);
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
-      font-weight: 500;
-      line-height: 1.1;
+      font-size: clamp(1.5rem, 2.2vw, 1.7rem);
+      font-weight: 700;
+      line-height: 1.25;
       letter-spacing: -0.01em;
       color: var(--ink);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.25rem;
     }
     h1 em { font-style: italic; color: var(--accent2); }
+    /* Role line under the name, replacing the old oversized nameplate */
+    .hero-role {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink3);
+      letter-spacing: 0.01em;
+      margin-bottom: 1.75rem;
+    }
     .hero-bio {
       font-family: var(--sans);
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--ink2);
       line-height: 1.75;
-      max-width: 480px;
-      margin-bottom: 1rem;
+      max-width: 700px;
+      margin-bottom: 1.15rem;
     }
     .hero-bio:last-of-type { margin-bottom: 2rem; }
     .hero-bio strong { color: var(--ink); font-weight: 500; }
@@ -263,10 +267,15 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      /* Centred on the text measure, not on the column: the bio is capped at
+         700px inside a wider column, so centring on the column would push the
+         buttons off the text's own centre line. */
+      justify-content: center;
+      max-width: 700px;
     }
     .btn {
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 0.9rem;
       font-weight: 500;
       padding: 0.6rem 1.4rem;
       border-radius: var(--r);
@@ -290,6 +299,35 @@
     }
     .btn-outline:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: translateY(-1px); }
 
+    /* Social handles under the hero buttons */
+    .hero-socials {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 1.4rem;
+      margin-top: 1.15rem;
+      /* Same 700px cap as .hero-links, so the buttons and the handles share a
+         centre line with the text rather than with the wider column. */
+      justify-content: center;
+      max-width: 700px;
+    }
+    .social {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink2);
+      transition: color 0.2s var(--ease);
+    }
+    .social:hover { color: var(--accent); }
+    .social-icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
     /* Hero photo */
     .hero-right {
       display: flex;
@@ -299,7 +337,7 @@
     }
     .photo-frame {
       width: 100%;
-      max-width: 320px;
+      max-width: 380px;
       aspect-ratio: 3/4;
       border-radius: 2px;
       background: var(--bg2);
@@ -313,7 +351,7 @@
     }
     .affiliation-badge {
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 0.7rem;
       color: var(--ink3);
       letter-spacing: 0.1em;
       padding: 0.4rem 0.8rem;
@@ -324,7 +362,7 @@
 
     /* ── SECTION BASE ───────────────────────────── */
     section {
-      padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+      padding: clamp(2rem, 3.5vw, 3rem) clamp(1.5rem, 5vw, 5rem);
       max-width: 1520px;
       margin: 0 auto;
     }
@@ -332,23 +370,15 @@
       display: flex;
       align-items: baseline;
       gap: 1.5rem;
-      margin-bottom: 3rem;
-      border-bottom: 0.5px solid var(--border);
-      padding-bottom: 1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0;
       flex-wrap: wrap;
-    }
-    .section-num {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ink3);
-      letter-spacing: 0.1em;
-      flex-shrink: 0;
     }
     h2 {
       font-family: var(--serif);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 500;
-      letter-spacing: -0.01em;
+      font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.015em;
     }
 
     /* ── NEWS BOX ──────────────────────────────── */
@@ -370,7 +400,7 @@
     }
     .news-badge {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -384,7 +414,7 @@
     }
     .news-text {
       font-family: var(--sans);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       color: var(--ink2);
       line-height: 1.6;
     }
@@ -398,14 +428,14 @@
     /* ── RESEARCH ───────────────────────────────── */
     #research { background: var(--bg); }
     .research-subsection {
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
     }
     .research-subsection:last-child { margin-bottom: 0; }
     .research-sub-title {
       font-family: var(--serif);
-      font-size: 1.15rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
       color: var(--ink);
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
@@ -422,7 +452,7 @@
     .research-sub-title.collapsible:hover { color: var(--accent); }
     .research-sub-title.collapsible .subsection-count {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 0.78rem;
       font-weight: 500;
       color: var(--ink3);
       background: var(--bg2);
@@ -449,7 +479,9 @@
       opacity: 0;
     }
     .research-subsection.open .paper-list.collapsible-content {
-      max-height: 800px;
+      /* Generous: descriptions are open by default and pictures may also be
+         expanded, so this has to clear the tallest realistic stack. */
+      max-height: 4000px;
       opacity: 1;
     }
     .paper-list { display: flex; flex-direction: column; gap: 0; }
@@ -459,15 +491,12 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
     }
-    .paper-item:first-child { border-top: 0.5px solid var(--border); }
-    .paper-item:hover { background: var(--bg2); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; border-radius: var(--r); }
-    .paper-item.no-expand { cursor: default; }
+    /* No border-top here: the subsection title already draws a rule directly
+       above the first paper, and two rules read as a double line. */
     .paper-status {
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       padding: 0.2rem 0.6rem;
       border-radius: 20px;
@@ -477,57 +506,59 @@
       margin-top: 3px;
     }
     .status-wp  { background: #eef4ff; color: #2a4a7f; border: 0.5px solid #b8cef0; }
-    .status-prog{ background: #fdf6ec; color: #8a5010; border: 0.5px solid #e8c880; }
+    /* The old fill (#fdf6ec) was within a hair of the cream page background,
+       so the badge read as an empty outline. Deepened to sit on cream. */
+    .status-prog{ background: #f7e6c8; color: #6f3f07; border: 0.5px solid #cf9b3c; }
     .status-policy{ background: #f3eef8; color: #5a3a8a; border: 0.5px solid #c0a8e0; }
     [data-theme="dark"] .status-wp  { background: #0d1830; color: #6a9fd8; border-color: #2a3a60; }
     [data-theme="dark"] .status-prog{ background: #201508; color: #d8942a; border-color: #4a3010; }
     [data-theme="dark"] .status-policy{ background: #1a1028; color: #a888d8; border-color: #3a2860; }
     .paper-title {
       font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 700;
       color: var(--ink);
       margin-bottom: 0.4rem;
       line-height: 1.4;
-      font-style: italic;
+      letter-spacing: -0.005em;
     }
     .paper-coauthors {
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 1rem;
       color: var(--ink2);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
     }
     .paper-abstract-preview {
       font-family: var(--sans);
-      font-size: 0.88rem;
+      font-size: 1.05rem;
       color: var(--ink2);
-      line-height: 1.7;
-      max-height: 0;
+      line-height: 1.75;
+      /* Open by default. Collapsed only when the item carries .desc-closed. */
+      max-height: 1200px;
       overflow: hidden;
       transition: max-height 0.4s var(--ease), opacity 0.3s;
-      opacity: 0;
+      opacity: 1;
     }
-    .paper-item.open .paper-abstract-preview { max-height: 1200px; opacity: 1; }
+    .paper-item.desc-closed .paper-abstract-preview { max-height: 0; opacity: 0; }
+
+    /* Images/carousels. Closed by default, opened by the "+ Pictures" toggle. */
+    .paper-media {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s var(--ease), opacity 0.3s;
+    }
+    .paper-item.pics-open .paper-media { max-height: 1400px; opacity: 1; }
+
     .paper-links {
       display: flex;
       gap: 0.75rem;
       margin-top: 0.75rem;
       flex-wrap: wrap;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.4s var(--ease), opacity 0.3s 0.1s;
-    }
-    .paper-item.open .paper-links { max-height: 60px; opacity: 1; }
-    /* For items that always show links */
-    .paper-links.always-visible {
-      max-height: 60px;
-      opacity: 1;
-      overflow: visible;
     }
     .paper-link-btn {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 0.78rem;
       font-weight: 500;
       padding: 0.3rem 0.75rem;
       border: 0.5px solid var(--border);
@@ -537,14 +568,37 @@
       transition: all 0.15s;
     }
     .paper-link-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .paper-expand-icon {
-      align-self: center;
-      font-size: 18px;
+    /* "Short Description:" and "Pictures" toggles under each paper title */
+    .paper-desc-toggle {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       color: var(--ink3);
-      transition: transform 0.3s var(--ease);
-      flex-shrink: 0;
+      background: none;
+      border: none;
+      padding: 0;
+      margin-top: 0.55rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s var(--ease);
     }
-    .paper-item.open .paper-expand-icon { transform: rotate(45deg); }
+    .paper-desc-toggle:hover { color: var(--accent); }
+    .paper-desc-sign {
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1;
+      width: 11px;
+      display: inline-block;
+    }
+    /* Description starts open, so it shows the minus until .desc-closed */
+    .paper-item:not(.desc-closed) .pd-plus { display: none; }
+    .paper-item.desc-closed .pd-minus { display: none; }
+    /* Pictures start closed, so they show the plus until .pics-open */
+    .paper-item:not(.pics-open) .pp-minus { display: none; }
+    .paper-item.pics-open .pp-plus { display: none; }
 
     /* Inline preview image shown when paper is expanded */
     .paper-inline-img {
@@ -564,7 +618,7 @@
     }
     .paper-inline-img figcaption {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 0.8rem;
       color: var(--ink3);
       text-align: center;
       padding: 0.5rem 0.6rem;
@@ -605,7 +659,7 @@
     }
     .paper-carousel-slide figcaption {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 0.8rem;
       color: var(--ink3);
       text-align: center;
       padding: 0.5rem 0.6rem;
@@ -625,7 +679,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 0.85rem;
       color: var(--ink2);
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: all 0.15s;
@@ -654,429 +708,6 @@
       background: var(--ink1);
     }
 
-    /* ── FIELDS / CHIPS ─────────────────────────── */
-    .fields-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 3rem;
-    }
-    .field-chip {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 0.35rem 0.9rem;
-      border-radius: 20px;
-      border: 0.5px solid var(--border);
-      color: var(--ink2);
-      background: var(--bg2);
-    }
-
-    /* ── TIMELINE / RECENT WORK ─────────────────── */
-    #timeline {
-      background: var(--bg2);
-      max-width: 100%;
-      padding: clamp(3rem, 6vw, 5rem) 0;
-      padding-bottom: clamp(4rem, 8vw, 6rem);
-      overflow: visible;
-    }
-    #timeline .section-header {
-      max-width: 1520px;
-      margin: 0 auto 2.5rem auto;
-      padding-left: clamp(1.5rem, 5vw, 5rem);
-      padding-right: clamp(1.5rem, 5vw, 5rem);
-    }
-
-    .timeline-container {
-      max-width: 1520px;
-      margin: 0 auto;
-      position: relative;
-      padding: 0 3.5rem;
-    }
-
-    /* Navigation arrows */
-    .tl-arrow {
-      position: absolute;
-      top: 8px;
-      z-index: 5;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--ink2);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.2s var(--ease);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    .tl-arrow:hover {
-      background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
-      transform: scale(1.1);
-    }
-    .tl-arrow.disabled {
-      opacity: 0.25;
-      cursor: default;
-      pointer-events: none;
-    }
-    .tl-arrow-left { left: 0; }
-    .tl-arrow-right { right: 0; }
-
-    .timeline-viewport {
-      overflow-x: clip;
-      overflow-y: visible;
-      position: relative;
-    }
-    .timeline-track {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
-      transition: transform 0.4s var(--ease);
-      padding: 0 0.5rem;
-    }
-    /* The horizontal line — drawn on viewport so it doesn't inflate scrollWidth */
-    .timeline-viewport::before {
-      content: '';
-      position: absolute;
-      top: 16px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--border);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .tl-item {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 130px;
-      padding: 0 0.6rem;
-      flex-shrink: 0;
-      padding-top: 4px;
-    }
-    /* The dot */
-    .tl-dot {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2.5px solid var(--accent);
-      position: relative;
-      z-index: 2;
-      cursor: pointer;
-      transition: all 0.25s var(--ease);
-      flex-shrink: 0;
-    }
-    .tl-dot:hover,
-    .tl-item:hover .tl-dot,
-    .tl-item.active .tl-dot {
-      background: var(--accent);
-      transform: scale(1.3);
-      box-shadow: 0 0 0 4px rgba(42,74,127,0.15);
-    }
-    .tl-dot.dot-grant { border-color: #2a8a5a; }
-    .tl-dot.dot-grant:hover, .tl-item:hover .tl-dot.dot-grant, .tl-item.active .tl-dot.dot-grant { background: #2a8a5a; box-shadow: 0 0 0 4px rgba(42,138,90,0.15); }
-    .tl-dot.dot-fellowship { border-color: var(--accent2); }
-    .tl-dot.dot-fellowship:hover, .tl-item:hover .tl-dot.dot-fellowship, .tl-item.active .tl-dot.dot-fellowship { background: var(--accent2); box-shadow: 0 0 0 4px rgba(200,80,42,0.15); }
-    .tl-dot.dot-publication { border-color: #5a3a8a; }
-    .tl-dot.dot-publication:hover, .tl-item:hover .tl-dot.dot-publication, .tl-item.active .tl-dot.dot-publication { background: #5a3a8a; box-shadow: 0 0 0 4px rgba(90,58,138,0.15); }
-    .tl-dot.dot-event { border-color: var(--ink3); }
-    .tl-dot.dot-event:hover, .tl-item:hover .tl-dot.dot-event, .tl-item.active .tl-dot.dot-event { background: var(--ink3); box-shadow: 0 0 0 4px rgba(154,150,144,0.15); }
-
-    [data-theme="dark"] .tl-dot { background: var(--bg2); }
-    [data-theme="dark"] .tl-dot.dot-grant { border-color: #4ac88a; }
-    [data-theme="dark"] .tl-dot.dot-grant:hover, [data-theme="dark"] .tl-item:hover .tl-dot.dot-grant, [data-theme="dark"] .tl-item.active .tl-dot.dot-grant { background: #4ac88a; }
-    [data-theme="dark"] .tl-dot.dot-fellowship { border-color: #e8784a; }
-    [data-theme="dark"] .tl-dot.dot-fellowship:hover, [data-theme="dark"] .tl-item:hover .tl-dot.dot-fellowship, [data-theme="dark"] .tl-item.active .tl-dot.dot-fellowship { background: #e8784a; }
-    [data-theme="dark"] .tl-dot.dot-publication { border-color: #a888d8; }
-    [data-theme="dark"] .tl-dot.dot-publication:hover, [data-theme="dark"] .tl-item:hover .tl-dot.dot-publication, [data-theme="dark"] .tl-item.active .tl-dot.dot-publication { background: #a888d8; }
-    [data-theme="dark"] .tl-arrow { background: var(--bg2); }
-
-    .tl-date {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--ink3);
-      letter-spacing: 0.08em;
-      margin-top: 0.7rem;
-      text-align: center;
-      white-space: nowrap;
-    }
-    .tl-label {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink2);
-      margin-top: 0.3rem;
-      text-align: center;
-      max-width: 140px;
-      line-height: 1.3;
-    }
-
-    /* Popup card — appears ABOVE the dot */
-    .tl-popup {
-      position: absolute;
-      bottom: calc(100% + 0.8rem);
-      left: 50%;
-      transform: translateX(-50%) translateY(8px);
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--r);
-      padding: 1rem;
-      min-width: 240px;
-      max-width: 300px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s var(--ease);
-      z-index: 10;
-    }
-    .tl-item:hover .tl-popup,
-    .tl-item.active .tl-popup {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-    .tl-popup-title {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
-      line-height: 1.4;
-    }
-    .tl-popup-desc {
-      font-size: 0.82rem;
-      color: var(--ink2);
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
-    .tl-popup-img {
-      width: 100%;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-      border: 0.5px solid var(--border2);
-    }
-    .tl-popup-link {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .tl-popup-link:hover { text-decoration: underline; }
-    .tl-popup-badge {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.08em;
-      color: var(--accent2);
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-
-    /* Year separator labels */
-    .tl-year-label {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 50px;
-      padding: 0 0.3rem;
-      flex-shrink: 0;
-      padding-top: 4px;
-    }
-    .tl-year-label span {
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      background: var(--bg2);
-      padding: 0 0.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* View toggle */
-    .view-toggle {
-      display: flex;
-      gap: 0;
-      margin-left: auto;
-      border: 0.5px solid var(--border);
-      border-radius: var(--r);
-      overflow: hidden;
-    }
-    .view-toggle-btn {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 0.35rem 0.8rem;
-      background: transparent;
-      color: var(--ink3);
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .view-toggle-btn:not(:last-child) { border-right: 0.5px solid var(--border); }
-    .view-toggle-btn.active { background: var(--ink); color: var(--bg); }
-    .view-toggle-btn:not(.active):hover { background: var(--bg2); color: var(--ink2); }
-
-    /* List view */
-    .tl-list-view { display: none; max-width: 1520px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
-    .tl-list-view.active { display: block; }
-    .timeline-container.active { display: block; }
-    .timeline-container:not(.active) { display: none; }
-    .tl-list-row {
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
-      gap: 0.75rem;
-      padding: 0.75rem 0.5rem;
-      border-bottom: 0.5px solid var(--border);
-      transition: background 0.15s;
-      position: relative;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      color: var(--ink2);
-    }
-    .tl-list-row:hover { background: var(--bg); }
-    .tl-list-date {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--ink3);
-      white-space: nowrap;
-      padding-top: 2px;
-    }
-    .tl-list-title {
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .tl-list-desc {
-      font-size: 0.82rem;
-      color: var(--ink3);
-      margin-top: 0.15rem;
-    }
-    .tl-list-type {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.06em;
-      padding: 0.15rem 0.45rem;
-      border-radius: 10px;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .tl-list-type.lt-grant { background: #eef8f2; color: #2a8a5a; border: 0.5px solid #a8d8c0; }
-    .tl-list-type.lt-fellowship { background: #fdf2ee; color: var(--accent2); border: 0.5px solid #e8b8a0; }
-    .tl-list-type.lt-publication { background: #f3eef8; color: #5a3a8a; border: 0.5px solid #c0a8e0; }
-    .tl-list-type.lt-event { background: var(--bg2); color: var(--ink3); border: 0.5px solid var(--border); }
-    [data-theme="dark"] .tl-list-type.lt-grant { background: #0a2018; color: #4ac88a; border-color: #1a4030; }
-    [data-theme="dark"] .tl-list-type.lt-fellowship { background: #201008; color: #e8784a; border-color: #4a2010; }
-    [data-theme="dark"] .tl-list-type.lt-publication { background: #1a1028; color: #a888d8; border-color: #3a2860; }
-    [data-theme="dark"] .tl-list-type.lt-event { background: var(--bg2); color: var(--ink3); border-color: var(--border); }
-    [data-theme="dark"] .tl-list-row:hover { background: var(--bg2); }
-    .tl-list-year-header {
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      padding: 1rem 0.5rem 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
-    /* List view hover popups */
-    .tl-list-row-wrap {
-      position: relative;
-    }
-    .tl-list-popup {
-      position: absolute;
-      right: 0;
-      bottom: calc(100% + 4px);
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--r);
-      padding: 0.8rem;
-      min-width: 220px;
-      max-width: 280px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(6px);
-      transition: all 0.25s var(--ease);
-      z-index: 10;
-    }
-    .tl-list-row-wrap:hover .tl-list-popup,
-    .tl-list-row-wrap.active .tl-list-popup {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .tl-list-popup img {
-      width: 100%;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-      border: 0.5px solid var(--border2);
-    }
-    .tl-list-popup-title {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
-    }
-    .tl-list-popup-desc {
-      font-size: 0.8rem;
-      color: var(--ink2);
-      line-height: 1.5;
-      margin-bottom: 0.4rem;
-    }
-    .tl-list-popup-link {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--accent);
-    }
-    .tl-list-popup-link:hover { text-decoration: underline; }
-    [data-theme="dark"] .tl-list-popup { background: var(--bg2); }
-
-    /* Timeline legend */
-    .tl-legend {
-      max-width: 1520px;
-      margin: 1.5rem auto 0 auto;
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 0 clamp(1.5rem, 5vw, 5rem);
-    }
-    .tl-legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--sans);
-      font-size: 11px;
-      color: var(--ink3);
-    }
-    .tl-legend-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-    }
-    .tl-legend-dot.lg-grant { background: #2a8a5a; }
-    .tl-legend-dot.lg-fellowship { background: var(--accent2); }
-    .tl-legend-dot.lg-publication { background: #5a3a8a; }
-    .tl-legend-dot.lg-event { background: var(--ink3); }
-
     /* ── TEACHING ──────────────────────────────── */
     #teaching { background: var(--bg); }
     .teaching-layout {
@@ -1084,31 +715,34 @@
       gap: 2rem;
       align-items: flex-start;
     }
-    .teaching-layout .cv-block { max-width: 700px; flex: 1; }
+    .teaching-layout .cv-block { max-width: 820px; flex: 1; }
+    /* This card is the section's call to action: a student landing here should
+       find the booking link before anything else. It is deliberately louder
+       than the teaching list beside it. */
     .office-hours-card {
       flex-shrink: 0;
       background: var(--bg2);
-      border: 0.5px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--r);
-      padding: 1.25rem 1.5rem;
+      padding: 1.75rem 2rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.9rem;
     }
     .office-hours-label {
       font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink3);
-      letter-spacing: 0.05em;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.01em;
     }
     .office-hours-link {
       font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 0.5rem 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.75rem 1.75rem;
       border-radius: var(--r);
       background: var(--ink);
       color: var(--bg);
@@ -1129,7 +763,6 @@
       align-items: center;
       justify-content: center;
       height: 340px;
-      perspective: 800px;
       overflow: hidden;
       margin-top: 1rem;
     }
@@ -1141,16 +774,18 @@
       align-items: center;
       justify-content: center;
     }
+    /* Flat filmstrip, not coverflow. Neighbours stay at full scale and sit
+       side by side; only opacity marks the active slide. No scale, no blur,
+       no perspective, minimal corner radius. */
     .carousel-slide {
       position: absolute;
       width: 380px;
       height: 280px;
-      border-radius: var(--r);
+      border-radius: 2px;
       overflow: hidden;
       border: 0.5px solid var(--border);
       cursor: pointer;
-      transition: all 0.5s var(--ease);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.45s var(--ease), opacity 0.45s var(--ease);
     }
     .carousel-slide img {
       width: 100%;
@@ -1160,42 +795,37 @@
     /* Center slide */
     .carousel-slide[data-pos="0"] {
       z-index: 3;
-      transform: translateX(0) scale(1);
+      transform: translateX(0);
       opacity: 1;
-      filter: none;
     }
     /* Right neighbor */
     .carousel-slide[data-pos="1"] {
       z-index: 2;
-      transform: translateX(65%) scale(0.82);
-      opacity: 0.6;
-      filter: blur(1.5px) grayscale(20%);
+      transform: translateX(104%);
+      opacity: 0.45;
     }
     /* Left neighbor */
     .carousel-slide[data-pos="-1"] {
       z-index: 2;
-      transform: translateX(-65%) scale(0.82);
-      opacity: 0.6;
-      filter: blur(1.5px) grayscale(20%);
+      transform: translateX(-104%);
+      opacity: 0.45;
     }
     /* Further right */
     .carousel-slide[data-pos="2"] {
       z-index: 1;
-      transform: translateX(115%) scale(0.65);
-      opacity: 0.25;
-      filter: blur(3px) grayscale(40%);
+      transform: translateX(208%);
+      opacity: 0.2;
     }
     /* Further left */
     .carousel-slide[data-pos="-2"] {
       z-index: 1;
-      transform: translateX(-115%) scale(0.65);
-      opacity: 0.25;
-      filter: blur(3px) grayscale(40%);
+      transform: translateX(-208%);
+      opacity: 0.2;
     }
     /* Hidden */
     .carousel-slide[data-pos="hidden"] {
       z-index: 0;
-      transform: translateX(150%) scale(0.5);
+      transform: translateX(312%);
       opacity: 0;
       pointer-events: none;
     }
@@ -1207,7 +837,7 @@
       z-index: 5;
       width: 36px;
       height: 36px;
-      border-radius: 50%;
+      border-radius: 2px;
       border: 1px solid var(--border);
       background: var(--bg);
       color: var(--ink2);
@@ -1217,7 +847,6 @@
       justify-content: center;
       font-size: 18px;
       transition: all 0.2s var(--ease);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     .carousel-arrow:hover {
       background: var(--ink);
@@ -1232,25 +861,13 @@
       text-align: center;
       margin-top: 1rem;
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 0.85rem;
       color: var(--ink3);
       min-height: 1.5em;
       transition: opacity 0.3s;
     }
 
-    /* ── ABOUT ──────────────────────────────────── */
-    #about { background: var(--bg2); border-radius: 0; }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .about-text { font-family: var(--sans); font-size: 1rem; color: var(--ink2); line-height: 1.75; }
-    .about-text p + p { margin-top: 1.2rem; }
-    .about-text strong { color: var(--ink); font-weight: 500; }
-    .about-text a { color: var(--accent); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-    .about-text a:hover { border-bottom-color: var(--accent); }
+    /* ── CV BLOCK (used in the Teaching section) ───── */
     .cv-block {
       background: var(--bg);
       border: 0.5px solid var(--border);
@@ -1267,20 +884,38 @@
     .cv-row:last-child { border-bottom: none; }
     .cv-year {
       font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ink3);
-      min-width: 68px;
-      padding-top: 2px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink2);
+      min-width: 100px;
+      padding-top: 1px;
       flex-shrink: 0;
     }
     .cv-content { flex: 1; min-width: 0; }
-    .cv-role { font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+    .cv-role { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; color: var(--ink); }
     .cv-place {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 0.9rem;
       color: var(--ink3);
       margin-top: 1px;
     }
+    /* Group label inside the CV block. Workshops and training sit under their
+       own heading so they read as a separate, smaller category than the TA
+       work rather than as equal-weight teaching appointments. */
+    .cv-group-label {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      padding: 0.9rem 1.25rem 0.4rem;
+      border-bottom: 0.5px solid var(--border2);
+      background: var(--bg2);
+    }
+    .cv-row.cv-row-minor { padding: 0.7rem 1.25rem; }
+    .cv-row-minor .cv-role { font-size: 0.95rem; font-weight: 400; color: var(--ink2); }
+    .cv-row-minor .cv-year { font-size: 0.95rem; font-weight: 500; color: var(--ink3); }
 
     /* ── CV LOGOS ──────────────────────────────────── */
     .cv-logo {
@@ -1308,9 +943,7 @@
     }
     #contact .section-header {
       justify-content: center;
-      border-bottom-color: rgba(255,255,255,0.1);
     }
-    #contact .section-num { color: rgba(255,255,255,0.3); }
     #contact h2 { color: var(--bg); }
     .contact-sub {
       font-family: var(--sans);
@@ -1329,7 +962,7 @@
     }
     .contact-link {
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 0.95rem;
       font-weight: 500;
       padding: 0.65rem 1.5rem;
       border-radius: var(--r);
@@ -1351,11 +984,12 @@
     /* ── FOOTER ─────────────────────────────────── */
     footer {
       background: var(--ink);
-      color: var(--ink3);
+      /* Not --ink3: this sits on the dark bar and needs a light grey. */
+      color: rgba(245,242,235,0.65);
       text-align: center;
       padding: 1.5rem;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 0.78rem;
       letter-spacing: 0.05em;
       border-top: 0.5px solid rgba(255,255,255,0.05);
     }
@@ -1373,6 +1007,9 @@
 
     /* ── RESPONSIVE ─────────────────────────────── */
     @media (max-width: 768px) {
+      /* The hero shows the name directly below, so the nav copy is redundant
+         here and would otherwise collide with the nav links. */
+      .nav-name { display: none; }
       /* Mobile hero */
       #home {
         display: flex;
@@ -1388,17 +1025,16 @@
         order: 1;
         display: contents;
       }
-      .hero-tag {
-        order: 1;
-        justify-content: center;
-        margin-bottom: 0.75rem;
-      }
-      .hero-tag::before { display: none; }
       h1 {
         order: 2;
-        font-size: 2.6rem;
-        letter-spacing: 0.02em;
-        margin-bottom: 0;
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.2rem;
+      }
+      .hero-role {
+        order: 2;
+        text-align: center;
+        margin-bottom: 1.25rem;
       }
       .hero-right {
         order: 3;
@@ -1428,32 +1064,22 @@
         font-size: 0.95rem;
         margin-bottom: 0.8rem;
       }
+      .hero-socials {
+        order: 6;
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.25rem;
+        margin-bottom: 1.5rem;
+        gap: 0.35rem 1.1rem;
+      }
 
       /* Teaching layout on mobile */
       .teaching-layout { flex-direction: column; align-items: center; }
 
-      /* View toggle on mobile */
-      .view-toggle {
-        width: auto;
-        margin: 0 auto;
-      }
-      /* List view: stack rows on mobile */
-      .tl-list-row {
-        grid-template-columns: auto auto;
-        gap: 0.4rem;
-      }
-      .tl-list-main {
-        grid-column: 1 / -1;
-        order: 3;
-      }
-      .tl-list-popup { display: none; }
-
       /* Other sections */
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .nav-links { gap: 1.2rem; }
       .paper-item { grid-template-columns: minmax(0, 1fr); }
       .paper-item > div { min-width: 0; }
-      .paper-expand-icon { display: none; }
 
       /* CV row on mobile: year + logo left, text right */
       .cv-row {
@@ -1473,22 +1099,18 @@
       .cv-logo img { height: 22px; }
       .cv-content { grid-column: 2; grid-row: 1 / 3; align-self: center; }
 
-      .tl-item { min-width: 110px; }
-      .tl-popup { min-width: 200px; max-width: 240px; }
-      .timeline-container { padding: 0 2.5rem; }
-      .tl-arrow { width: 28px; height: 28px; font-size: 14px; }
       .carousel-slide { width: 280px; height: 200px; }
       .carousel-wrapper { height: 260px; }
     }
     @media (max-width: 480px) {
       .nav-links .hide-mobile { display: none; }
-      h1 { font-size: 2.2rem; }
-      .tl-legend { gap: 0.8rem; }
+      h1 { font-size: 1.4rem; }
       .carousel-slide { width: 220px; height: 160px; }
       .carousel-wrapper { height: 220px; }
-      .carousel-slide[data-pos="1"],
-      .carousel-slide[data-pos="-1"] { transform: translateX(60%) scale(0.75); }
-      .carousel-slide[data-pos="-1"] { transform: translateX(-60%) scale(0.75); }
+      /* Kept flat here too: no scale, just a tighter offset so a sliver of
+         the neighbouring slide stays visible on a narrow screen. */
+      .carousel-slide[data-pos="1"] { transform: translateX(88%); }
+      .carousel-slide[data-pos="-1"] { transform: translateX(-88%); }
     }
   </style>
 </head>
@@ -1496,12 +1118,11 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <span class="nav-name"></span>
+    <a class="nav-name" href="#home">Dario De Quarti</a>
     <ul class="nav-links">
       <li><a href="#research">Research</a></li>
-      <li><a href="#timeline">Recent</a></li>
-      <li class="hide-mobile"><a href="#about">About</a></li>
       <li class="hide-mobile"><a href="#teaching">Teaching</a></li>
+      <li><a href="cv_website.pdf" target="_blank">CV</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
         <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
@@ -1511,23 +1132,45 @@
 
   <!-- HERO -->
   <div class="hero-wrapper">
-    <div class="hero-bg"></div>
     <section id="home">
       <div class="hero-left">
-        <div class="hero-tag">PhD Candidate &middot; Economics</div>
         <h1>Dario De Quarti</h1>
+        <div class="hero-role">PhD Candidate in Economics, Geneva Graduate Institute</div>
         <p class="hero-bio">
-          Third-year PhD candidate at the <strong>Geneva Graduate Institute</strong>,
-          with a focus on <strong>development economics and trade</strong>.
+          I am a PhD candidate at the <strong>Geneva Graduate Institute</strong>.
+          My research interests are in <strong>development economics and international trade</strong>.
+          You can find my CV <a href="cv_website.pdf" target="_blank">here</a>.
         </p>
         <p class="hero-bio">
-          Supervised by <a href="https://www.juliacajalgrossi.com/" target="_blank"><strong>Pr. Cajal Grossi</strong></a>
-          and <a href="https://clauderaisaro.github.io/" target="_blank"><strong>Pr. Raisaro</strong></a>.
-          Previously worked at the <strong>WTO</strong> and <strong>International Trade Centre</strong>.
+          My current doctoral research is on humanitarian aid and trade in South Sudan,
+          and on informality and tax compliance in Zambia. This work is supported by
+          several grants and fellowships, including from <strong>IGC</strong>,
+          <strong>STEG (CEPR)</strong>, <strong>ReCIPE (CEPR)</strong> and <strong>UNU-WIDER</strong>.
+        </p>
+        <p class="hero-bio">
+          Before the PhD, I worked at the <strong>World Trade Organization</strong> and at the
+          <strong>International Trade Centre</strong> (UN/WTO).
         </p>
         <div class="hero-links">
-          <a href="https://linkedin.com/in/dario-de-quarti/" class="btn btn-outline" target="_blank">LinkedIn</a>
+          <a href="cv_website.pdf" class="btn btn-outline" target="_blank">CV</a>
           <a href="mailto:dario.dequarti@graduateinstitute.ch" class="btn btn-outline">Email</a>
+        </div>
+        <div class="hero-socials">
+          <a class="social" href="https://linkedin.com/in/dario-de-quarti/" target="_blank" rel="noopener"
+             aria-label="LinkedIn: Dario De Quarti">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/></svg>
+            <span>in/dario-de-quarti</span>
+          </a>
+          <a class="social" href="https://bsky.app/profile/dariodequarti.bsky.social" target="_blank" rel="noopener"
+             aria-label="Bluesky: @dariodequarti.bsky.social">
+            <svg class="social-icon" viewBox="0 0 568 501" aria-hidden="true"><path d="M123.121 33.664C188.241 82.553 258.281 181.681 284 234.873c25.719-53.192 95.759-152.32 160.879-201.209C491.866-1.612 568-28.906 568 57.946c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748 114.875 19.551 144.097 84.311 80.986 149.071-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.889-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.292 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"/></svg>
+            <span>@dariodequarti.bsky.social</span>
+          </a>
+          <a class="social" href="https://x.com/DarioDeQuarti" target="_blank" rel="noopener"
+             aria-label="X: @DarioDeQuarti">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z"/></svg>
+            <span>@DarioDeQuarti</span>
+          </a>
         </div>
       </div>
       <div class="hero-right">
@@ -1537,59 +1180,81 @@
       </div>
     </section>
     <!-- NEWS -->
-    <div class="news-bar" style="padding-bottom:clamp(2rem,4vw,3rem);">
+    <div class="news-bar" style="padding-bottom:clamp(1rem,2vw,1.5rem);">
       <div class="news-box reveal">
         <span class="news-badge">New</span>
         <div class="news-text">
-          From April to June 2026, I'll be joining the <strong>UNU-WIDER PhD Fellowship</strong> in Helsinki.
+          In October 2026, I'll be presenting at the <strong>DevEconMeet Conference</strong> in Palermo.
           Feel free to reach out if you'd like to connect there!
         </div>
       </div>
     </div>
   </div>
-
   <!-- RESEARCH -->
   <section id="research">
     <div class="section-header reveal">
-      <span class="section-num">01 /</span>
       <h2>Research</h2>
-    </div>
-
-    <div class="fields-row reveal reveal-delay-1">
-      <span class="field-chip">Development Economics</span>
-      <span class="field-chip">Trade</span>
-      <span class="field-chip">Informality</span>
-      <span class="field-chip">Humanitarian Aid</span>
     </div>
 
     <!-- Ongoing Doctoral Research -->
     <div class="research-subsection open reveal" id="doctoral-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('doctoral-section')">Ongoing Doctoral Research <span class="subsection-count">2</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
-        <div class="paper-item" onclick="togglePaper(this)">
+        <div class="paper-item">
           <div>
-            <div class="paper-title">Organizing Humanitarian Aid in South Sudan</div>
+            <div class="paper-title">Humanitarian Aid and Trade in South Sudan</div>
             <div class="paper-coauthors">with IMPACT Initiatives. Supported by ReCIPE CEPR and SurveyCTO</div>
+            <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
+              <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
+            </button>
             <div class="paper-abstract-preview">
               How should we invest in and allocate humanitarian aid in conflict-affected economies? I combine six years of geospatial data on trade, aid, and conflict across South Sudanese marketplaces to study the spatial allocation of humanitarian aid.
-              <div class="paper-inline-img">
-                <img src="pictures/ssd_network_map.png" alt="South Sudan trade network map" />
-                <figcaption>Trade network across South Sudanese marketplaces, built from six years of geospatial data</figcaption>
+            </div>
+            <button class="paper-desc-toggle" type="button" onclick="togglePics(this)" aria-expanded="false">
+              <span class="paper-desc-sign"><span class="pp-plus">+</span><span class="pp-minus">&minus;</span></span>Pictures
+            </button>
+            <div class="paper-media">
+              <div class="paper-carousel">
+                <div class="paper-carousel-viewport">
+                  <div class="paper-carousel-track">
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/ssd_network_map.jpg" alt="Trade network across South Sudanese marketplaces" />
+                      <figcaption>Trade Network across South Sudanese Marketplaces (2019&ndash;2025)</figcaption>
+                    </div>
+                    <div class="paper-carousel-slide">
+                      <img src="pictures/ssd_aid_benefs.png" alt="Average monthly aid beneficiaries by county in South Sudan" />
+                      <figcaption>Average Monthly Aid Beneficiaries in South Sudan, % of County Population, 2021&ndash;2025</figcaption>
+                    </div>
+                  </div>
+                </div>
+                <div class="paper-carousel-arrow left" onclick="slidePaperCarousel(this,-1)">&#8249;</div>
+                <div class="paper-carousel-arrow right" onclick="slidePaperCarousel(this,1)">&#8250;</div>
+                <div class="paper-carousel-dots">
+                  <div class="paper-carousel-dot active" onclick="goToPaperSlide(this,0)"></div>
+                  <div class="paper-carousel-dot" onclick="goToPaperSlide(this,1)"></div>
+                </div>
               </div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-prog">In Progress</span>
-            <span class="paper-expand-icon">+</span>
           </div>
         </div>
-        <div class="paper-item" onclick="togglePaper(this)">
+        <div class="paper-item">
           <div>
-            <div class="paper-title">Informality on the Intensive Margin in Zambia</div>
+            <div class="paper-title">Informality among Formal Firms in Zambia</div>
             <div class="paper-coauthors">Supported by IGC, UNU-WIDER, STEG-CEPR</div>
+            <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
+              <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
+            </button>
             <div class="paper-abstract-preview">
               Do formal firms operate informally, and why? I study the rollout of electronic invoicing in Zambia during a period of daily power shortages to understand how firms navigate formality when public infrastructure fails.
-              <div class="paper-carousel" onclick="event.stopPropagation()">
+            </div>
+            <button class="paper-desc-toggle" type="button" onclick="togglePics(this)" aria-expanded="false">
+              <span class="paper-desc-sign"><span class="pp-plus">+</span><span class="pp-minus">&minus;</span></span>Pictures
+            </button>
+            <div class="paper-media">
+              <div class="paper-carousel">
                 <div class="paper-carousel-viewport">
                   <div class="paper-carousel-track">
                     <div class="paper-carousel-slide">
@@ -1613,7 +1278,6 @@
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-prog">In Progress</span>
-            <span class="paper-expand-icon">+</span>
           </div>
         </div>
       </div>
@@ -1623,16 +1287,24 @@
     <div class="research-subsection reveal reveal-delay-1" id="policy-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('policy-section')">Policy Contributions <span class="subsection-count">2</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
-        <div class="paper-item" onclick="togglePaper(this)">
+        <div class="paper-item">
           <div>
             <div class="paper-title">E-invoicing adoption under loadshedding in Zambia</div>
-            <div class="paper-coauthors">with S. Jackson &mdash; IGC Policy Brief, 2025</div>
+            <div class="paper-coauthors">with S. Jackson - IGC Policy Brief, 2025</div>
             <div class="paper-links always-visible">
               <a href="https://www.theigc.org/publications/e-invoicing-adoption-under-loadshedding-zambia" class="paper-link-btn" target="_blank">IGC Brief &#8599;</a>
             </div>
+            <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
+              <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
+            </button>
             <div class="paper-abstract-preview">
               Since 2024, all Zambian firms must use electronic invoices for VAT reporting. Based on interviews with 61 firms, we study how daily loadshedding disrupts adoption: firms unable to issue smart invoices lose formal customers and revert to informal trade, even as high awareness and compliance efforts by the Zambia Revenue Authority promise long-term gains in tax revenue.
-              <div class="paper-carousel" onclick="event.stopPropagation()">
+            </div>
+            <button class="paper-desc-toggle" type="button" onclick="togglePics(this)" aria-expanded="false">
+              <span class="paper-desc-sign"><span class="pp-plus">+</span><span class="pp-minus">&minus;</span></span>Pictures
+            </button>
+            <div class="paper-media">
+              <div class="paper-carousel">
                 <div class="paper-carousel-viewport">
                   <div class="paper-carousel-track">
                     <div class="paper-carousel-slide">
@@ -1645,7 +1317,7 @@
                     </div>
                     <div class="paper-carousel-slide">
                       <img src="pictures/informality_barchart_backup_loadshedding.png" alt="Formal trade decline under loadshedding" />
-                      <figcaption>54% of Smart Invoice users lost formal customers due to loadshedding &mdash; back-up power proved too unreliable to help</figcaption>
+                      <figcaption>54% of Smart Invoice users lost formal customers due to loadshedding - back-up power proved too unreliable to help</figcaption>
                     </div>
                   </div>
                 </div>
@@ -1661,18 +1333,25 @@
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-policy">Policy Brief</span>
-            <span class="paper-expand-icon">+</span>
           </div>
         </div>
-        <div class="paper-item" onclick="togglePaper(this)">
+        <div class="paper-item">
           <div>
             <div class="paper-title">Trade Finance in West Africa</div>
-            <div class="paper-coauthors">IFC&ndash;WTO &mdash; Policy Report, 2022</div>
+            <div class="paper-coauthors">IFC&ndash;WTO - Policy Report, 2022</div>
             <div class="paper-links always-visible">
               <a href="https://www.wto.org/english/res_e/publications_e/tfinwestafrica_e.htm" class="paper-link-btn" target="_blank">Report &#8599;</a>
             </div>
+            <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
+              <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
+            </button>
             <div class="paper-abstract-preview">
               A joint IFC&ndash;WTO study surveying banks across C&ocirc;te d'Ivoire, Ghana, Nigeria, and Senegal to assess trade finance gaps and estimate the potential boost to trade from closing them.
+            </div>
+            <button class="paper-desc-toggle" type="button" onclick="togglePics(this)" aria-expanded="false">
+              <span class="paper-desc-sign"><span class="pp-plus">+</span><span class="pp-minus">&minus;</span></span>Pictures
+            </button>
+            <div class="paper-media">
               <div class="paper-inline-img">
                 <img src="pictures/tradefinance_boost_trade.png" alt="Projected trade cost reductions in ECOWAS" />
                 <figcaption>Expanding trade finance coverage could raise ECOWAS merchandise trade by 8&ndash;16%, with the strongest boost to intra-regional flows</figcaption>
@@ -1681,7 +1360,6 @@
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-policy">Policy Report</span>
-            <span class="paper-expand-icon">+</span>
           </div>
         </div>
       </div>
@@ -1691,316 +1369,22 @@
     <div class="research-subsection reveal reveal-delay-2" id="predoc-section">
       <div class="research-sub-title collapsible" onclick="toggleSubsection('predoc-section')">Pre-Doctoral Working Paper <span class="subsection-count">1</span> <span class="subsection-toggle"><span class="subsection-toggle-plus">+</span><span class="subsection-toggle-minus">&minus;</span></span></div>
       <div class="paper-list collapsible-content">
-        <div class="paper-item" onclick="togglePaper(this)">
+        <div class="paper-item">
           <div>
             <div class="paper-title">A Novel Framework to Evaluate Changes in Access and Costs of Trade Finance</div>
-            <div class="paper-coauthors">with M. Auboin and E. Bekkers &mdash; WTO Working Paper, 2023</div>
+            <div class="paper-coauthors">with M. Auboin and E. Bekkers - WTO Working Paper, 2023</div>
+            <div class="paper-links always-visible">
+              <a href="https://www.wto.org/english/res_e/reser_e/ersd202301_e.htm" class="paper-link-btn" target="_blank">WTO Paper &#8599;</a>
+            </div>
+            <button class="paper-desc-toggle" type="button" onclick="toggleDesc(this)" aria-expanded="true">
+              <span class="paper-desc-sign"><span class="pd-plus">+</span><span class="pd-minus">&minus;</span></span>Short Description:
+            </button>
             <div class="paper-abstract-preview">
               We develop a CGE framework to evaluate how changes in trade finance conditions affect trade flows.
-            </div>
-            <div class="paper-links">
-              <a href="https://www.wto.org/english/res_e/reser_e/ersd202301_e.htm" class="paper-link-btn" target="_blank" onclick="event.stopPropagation()">WTO Paper &#8599;</a>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
             <span class="paper-status status-wp">Working Paper</span>
-            <span class="paper-expand-icon">+</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RECENT WORK TIMELINE -->
-  <section id="timeline">
-    <div class="section-header reveal">
-      <span class="section-num">02 /</span>
-      <h2>Recent Work</h2>
-      <div class="view-toggle">
-        <button class="view-toggle-btn active" id="viewTimeline" onclick="switchView('timeline')">&#9679; Timeline</button>
-        <button class="view-toggle-btn" id="viewList" onclick="switchView('list')">&#9776; List</button>
-      </div>
-    </div>
-
-    <div class="timeline-container reveal active" id="tlContainer">
-      <button class="tl-arrow tl-arrow-left disabled" id="tlLeft" aria-label="Scroll left">&#8249;</button>
-      <button class="tl-arrow tl-arrow-right" id="tlRight" aria-label="Scroll right">&#8250;</button>
-
-      <div class="timeline-viewport" id="tlViewport">
-        <div class="timeline-track" id="tlTrack">
-
-          <div class="tl-year-label"><span>2025</span></div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <img src="pictures/vic_falls.jpg" alt="Victoria Falls, Zambia" class="tl-popup-img" />
-              <div class="tl-popup-title">PhD Fellowship &mdash; IGC Zambia Evidence Lab</div>
-              <div class="tl-popup-desc">Funded research stay in Lusaka, Zambia. Partnership with the Ministry of Finance and the Zambia Revenue Authority.</div>
-              <a href="https://www.theigc.org/people/dario-de-quarti" class="tl-popup-link" target="_blank">IGC profile &#8599;</a>
-            </div>
-            <div class="tl-dot dot-fellowship"></div>
-            <div class="tl-date">Jul&ndash;Sep</div>
-            <div class="tl-label">PhD Fellowship &ndash; IGC Zambia Evidence Lab</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <img src="pictures/presenting.jpg" alt="Teaching research methods in Zambia" class="tl-popup-img" />
-              <div class="tl-popup-title">IGC Research Methods Workshop</div>
-              <div class="tl-popup-desc">Teaching research methods at an IGC event in Zambia.</div>
-            </div>
-            <div class="tl-dot dot-event"></div>
-            <div class="tl-date">Aug</div>
-            <div class="tl-label">IGC Research Methods Workshop</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <img src="pictures/roundtable.jpg" alt="IGC Roundtable" class="tl-popup-img" />
-              <div class="tl-popup-title">IGC Roundtable Discussion</div>
-              <div class="tl-popup-desc">Participated in policy roundtable on distributed solar solutions and SMEs in Zambia.</div>
-              <a href="https://www.theigc.org/events/zambias-distributed-solar-roundtable" class="tl-popup-link" target="_blank">Learn more &#8599;</a>
-            </div>
-            <div class="tl-dot dot-event"></div>
-            <div class="tl-date">14 Oct</div>
-            <div class="tl-label">IGC Roundtable</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <div class="tl-popup-title">Policy Brief Published</div>
-              <div class="tl-popup-desc">"E-invoicing adoption under loadshedding in Zambia" &mdash; with S. Jackson.</div>
-              <a href="https://www.theigc.org/publications/e-invoicing-adoption-under-loadshedding-zambia" class="tl-popup-link" target="_blank">Read the brief &#8599;</a>
-            </div>
-            <div class="tl-dot dot-publication"></div>
-            <div class="tl-date">18 Nov</div>
-            <div class="tl-label">IGC Policy Brief</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <div class="tl-popup-title">PhD Grant &mdash; ReCIPE CEPR</div>
-              <div class="tl-popup-desc">Funding for survey work in South Sudan on humanitarian aid allocation.</div>
-            </div>
-            <div class="tl-dot dot-grant"></div>
-            <div class="tl-date">Nov</div>
-            <div class="tl-label">PhD Grant &ndash; ReCIPE CEPR</div>
-          </div>
-
-          <div class="tl-year-label"><span>2026</span></div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <div class="tl-popup-badge">Honorable Mention</div>
-              <div class="tl-popup-title">SurveyCTO &mdash; Research Grant</div>
-              <div class="tl-popup-desc">Primary Data Collection Research Grant for field survey infrastructure.</div>
-              <a href="https://www.surveycto.com/press-releases/2025-primary-data-collection-research-grant-winners/" class="tl-popup-link" target="_blank">Announcement &#8599;</a>
-            </div>
-            <div class="tl-dot dot-grant"></div>
-            <div class="tl-date">Feb</div>
-            <div class="tl-label">SurveyCTO &ndash; Research Grant</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <div class="tl-popup-title">PhD Day</div>
-              <div class="tl-popup-desc">Presented research progress at the PhD Day joint with the University of Geneva.</div>
-            </div>
-            <div class="tl-dot dot-event"></div>
-            <div class="tl-date">Feb</div>
-            <div class="tl-label">PhD Day joint with UNIGE</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <div class="tl-popup-title">PhD Grant &mdash; STEG CEPR</div>
-              <div class="tl-popup-desc">Funding for fieldwork and data analysis in Zambia.</div>
-            </div>
-            <div class="tl-dot dot-grant"></div>
-            <div class="tl-date">Apr</div>
-            <div class="tl-label">PhD Grant &ndash; STEG CEPR</div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-popup">
-              <div class="tl-popup-title">PhD Fellowship &mdash; UNU-WIDER</div>
-              <div class="tl-popup-desc">Funded research stay in Helsinki, Finland.</div>
-            </div>
-            <div class="tl-dot dot-fellowship"></div>
-            <div class="tl-date">Apr&ndash;Jun</div>
-            <div class="tl-label">PhD Fellowship &ndash; UNU-WIDER</div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-legend reveal reveal-delay-1" id="tlLegend">
-      <div class="tl-legend-item"><div class="tl-legend-dot lg-grant"></div> Grant</div>
-      <div class="tl-legend-item"><div class="tl-legend-dot lg-fellowship"></div> Fellowship</div>
-      <div class="tl-legend-item"><div class="tl-legend-dot lg-publication"></div> Publication</div>
-      <div class="tl-legend-item"><div class="tl-legend-dot lg-event"></div> Event</div>
-    </div>
-
-    <div class="tl-list-view" id="tlListView">
-      <div class="tl-list-year-header">2026</div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Apr&ndash;Jun</div>
-        <div class="tl-list-main"><div class="tl-list-title">PhD Fellowship &mdash; UNU-WIDER</div><div class="tl-list-desc">Funded research stay in Helsinki, Finland</div></div>
-        <div><span class="tl-list-type lt-fellowship">Fellowship</span></div>
-        <div class="tl-list-popup">
-          <div class="tl-list-popup-title">PhD Fellowship &mdash; UNU-WIDER</div>
-          <div class="tl-list-popup-desc">Funded research stay in Helsinki, Finland.</div>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Apr</div>
-        <div class="tl-list-main"><div class="tl-list-title">PhD Grant &mdash; STEG CEPR</div><div class="tl-list-desc">Funding for fieldwork and data analysis in Zambia</div></div>
-        <div><span class="tl-list-type lt-grant">Grant</span></div>
-        <div class="tl-list-popup">
-          <div class="tl-list-popup-title">PhD Grant &mdash; STEG CEPR</div>
-          <div class="tl-list-popup-desc">Funding for fieldwork and data analysis in Zambia.</div>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Feb</div>
-        <div class="tl-list-main"><div class="tl-list-title">PhD Day</div><div class="tl-list-desc">Presented research at PhD Day joint with University of Geneva</div></div>
-        <div><span class="tl-list-type lt-event">Event</span></div>
-        <div class="tl-list-popup">
-          <div class="tl-list-popup-title">PhD Day</div>
-          <div class="tl-list-popup-desc">Presented research progress at the PhD Day joint with the University of Geneva.</div>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Feb</div>
-        <div class="tl-list-main"><div class="tl-list-title">SurveyCTO &mdash; Research Grant</div><div class="tl-list-desc">Primary Data Collection Research Grant &mdash; Honorable Mention</div></div>
-        <div><span class="tl-list-type lt-grant">Grant</span></div>
-        <div class="tl-list-popup">
-          <div class="tl-list-popup-title">SurveyCTO &mdash; Research Grant</div>
-          <div class="tl-list-popup-desc">Primary Data Collection Research Grant for field survey infrastructure.</div>
-          <a href="https://www.surveycto.com/press-releases/2025-primary-data-collection-research-grant-winners/" class="tl-list-popup-link" target="_blank">Announcement &#8599;</a>
-        </div>
-      </div>
-      <div class="tl-list-year-header">2025</div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Nov</div>
-        <div class="tl-list-main"><div class="tl-list-title">PhD Grant &mdash; ReCIPE CEPR</div><div class="tl-list-desc">Funding for survey work in South Sudan on humanitarian aid</div></div>
-        <div><span class="tl-list-type lt-grant">Grant</span></div>
-        <div class="tl-list-popup">
-          <div class="tl-list-popup-title">PhD Grant &mdash; ReCIPE CEPR</div>
-          <div class="tl-list-popup-desc">Funding for survey work in South Sudan on humanitarian aid allocation.</div>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">18 Nov</div>
-        <div class="tl-list-main"><div class="tl-list-title">IGC Policy Brief Published</div><div class="tl-list-desc">"E-invoicing adoption under loadshedding in Zambia" &mdash; with S. Jackson</div></div>
-        <div><span class="tl-list-type lt-publication">Publication</span></div>
-        <div class="tl-list-popup">
-          <div class="tl-list-popup-title">Policy Brief Published</div>
-          <div class="tl-list-popup-desc">"E-invoicing adoption under loadshedding in Zambia" &mdash; with S. Jackson.</div>
-          <a href="https://www.theigc.org/publications/e-invoicing-adoption-under-loadshedding-zambia" class="tl-list-popup-link" target="_blank">Read the brief &#8599;</a>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">14 Oct</div>
-        <div class="tl-list-main"><div class="tl-list-title">IGC Roundtable Discussion</div><div class="tl-list-desc">Policy roundtable on distributed solar solutions and SMEs in Zambia</div></div>
-        <div><span class="tl-list-type lt-event">Event</span></div>
-        <div class="tl-list-popup">
-          <img src="pictures/roundtable.jpg" alt="IGC Roundtable" />
-          <div class="tl-list-popup-title">IGC Roundtable Discussion</div>
-          <div class="tl-list-popup-desc">Participated in policy roundtable on distributed solar solutions and SMEs in Zambia.</div>
-          <a href="https://www.theigc.org/events/zambias-distributed-solar-roundtable" class="tl-list-popup-link" target="_blank">Learn more &#8599;</a>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Aug</div>
-        <div class="tl-list-main"><div class="tl-list-title">IGC Research Methods Workshop</div><div class="tl-list-desc">Teaching research methods at an IGC event in Zambia</div></div>
-        <div><span class="tl-list-type lt-event">Event</span></div>
-        <div class="tl-list-popup">
-          <img src="pictures/presenting.jpg" alt="Teaching research methods" />
-          <div class="tl-list-popup-title">IGC Research Methods Workshop</div>
-          <div class="tl-list-popup-desc">Teaching research methods at an IGC event in Zambia.</div>
-        </div>
-      </div>
-      <div class="tl-list-row tl-list-row-wrap">
-        <div class="tl-list-date">Jul&ndash;Sep</div>
-        <div class="tl-list-main"><div class="tl-list-title">PhD Fellowship &mdash; IGC Zambia Evidence Lab</div><div class="tl-list-desc">Funded research stay in Lusaka, Zambia</div></div>
-        <div><span class="tl-list-type lt-fellowship">Fellowship</span></div>
-        <div class="tl-list-popup">
-          <img src="pictures/vic_falls.jpg" alt="Victoria Falls, Zambia" />
-          <div class="tl-list-popup-title">PhD Fellowship &mdash; IGC Zambia Evidence Lab</div>
-          <div class="tl-list-popup-desc">Funded research stay in Lusaka, Zambia. Partnership with the Ministry of Finance and the Zambia Revenue Authority.</div>
-          <a href="https://www.theigc.org/people/dario-de-quarti" class="tl-list-popup-link" target="_blank">IGC profile &#8599;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-header reveal">
-      <span class="section-num">03 /</span>
-      <h2>About</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>
-          I'm a third-year PhD candidate in Economics at the <strong>Geneva Graduate Institute</strong>,
-          supervised by <a href="https://www.juliacajalgrossi.com/" target="_blank"><strong>Pr. Cajal Grossi</strong></a>
-          and <a href="https://clauderaisaro.github.io/" target="_blank"><strong>Pr. Raisaro</strong></a>.
-          My research interests are in <strong>development economics and trade</strong>.
-        </p>
-        <p>
-          Before the PhD, I worked as a Trade Information Specialist at the
-          <strong>International Trade Centre (UNCTAD/WTO)</strong> and as a Research Assistant
-          at the <strong>World Trade Organization</strong>. I hold an MSc in Economics
-          from the Geneva Graduate Institute and a BSc in Economics from HEC Lausanne.
-        </p>
-        <p>
-          I speak French, Italian, English, and Portuguese.
-        </p>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div class="cv-block">
-          <div class="cv-row">
-            <div class="cv-year">2023 &ndash;</div>
-            <div class="cv-content">
-              <div class="cv-role">PhD in Economics</div>
-              <div class="cv-place">Geneva Graduate Institute</div>
-            </div>
-            <div class="cv-logo"><img src="pictures/logo_simple_GenevaGraduateInstitute_2022_color_RGB.jpg" alt="Geneva Graduate Institute" /></div>
-          </div>
-          <div class="cv-row">
-            <div class="cv-year">2022 &ndash; 23</div>
-            <div class="cv-content">
-              <div class="cv-role">Trade Information Specialist</div>
-              <div class="cv-place">International Trade Centre (UNCTAD/WTO)</div>
-            </div>
-            <div class="cv-logo"><img src="pictures/itc logo.svg" alt="International Trade Centre" /></div>
-          </div>
-          <div class="cv-row">
-            <div class="cv-year">2021 &ndash; 22</div>
-            <div class="cv-content">
-              <div class="cv-role">Research Assistant</div>
-              <div class="cv-place">World Trade Organization</div>
-            </div>
-            <div class="cv-logo"><img src="pictures/wto logo.svg" alt="World Trade Organization" /></div>
-          </div>
-          <div class="cv-row">
-            <div class="cv-year">2020 &ndash; 22</div>
-            <div class="cv-content">
-              <div class="cv-role">MSc Economics</div>
-              <div class="cv-place">Geneva Graduate Institute</div>
-            </div>
-            <div class="cv-logo"><img src="pictures/logo_simple_GenevaGraduateInstitute_2022_color_RGB.jpg" alt="Geneva Graduate Institute" /></div>
-          </div>
-          <div class="cv-row">
-            <div class="cv-year">2017 &ndash; 20</div>
-            <div class="cv-content">
-              <div class="cv-role">BSc Economics</div>
-              <div class="cv-place">HEC Lausanne</div>
-            </div>
-            <div class="cv-logo"><img src="pictures/UNIL Logo.webp" alt="HEC Lausanne – UNIL" /></div>
           </div>
         </div>
       </div>
@@ -2010,7 +1394,6 @@
   <!-- TEACHING -->
   <section id="teaching">
     <div class="section-header reveal">
-      <span class="section-num">04 /</span>
       <h2>Teaching</h2>
     </div>
     <div class="teaching-layout reveal">
@@ -2018,28 +1401,36 @@
         <div class="cv-row">
           <div class="cv-year">2025 &ndash;</div>
           <div class="cv-content">
-            <div class="cv-role">Teaching Assistant &mdash; Statistics, Economics (various Master-level courses)</div>
+            <div class="cv-role">Teaching Assistant - Statistics, Economics of Energy Transition (MA)</div>
             <div class="cv-place">Geneva Graduate Institute</div>
           </div>
         </div>
         <div class="cv-row">
-          <div class="cv-year">Aug 2025</div>
+          <div class="cv-year">2018 &ndash; 2019</div>
           <div class="cv-content">
-            <div class="cv-role">IGC Research Methods Workshop</div>
-            <div class="cv-place">International Growth Centre, Zambia</div>
+            <div class="cv-role">Teaching Assistant - Macroeconomics I, Microeconomics I (BSc)</div>
+            <div class="cv-place">University of Lausanne (HEC)</div>
           </div>
         </div>
-        <div class="cv-row">
-          <div class="cv-year">2018 &ndash; 20</div>
+        <div class="cv-group-label">Workshops and Training</div>
+        <div class="cv-row cv-row-minor">
+          <div class="cv-year">2026</div>
           <div class="cv-content">
-            <div class="cv-role">Teaching Assistant &mdash; Macroeconomics, Microeconomics</div>
-            <div class="cv-place">University of Lausanne (HEC)</div>
+            <div class="cv-role">Claude Code and Agentic Coding for Economic Research</div>
+            <div class="cv-place">UNU-WIDER, Helsinki</div>
+          </div>
+        </div>
+        <div class="cv-row cv-row-minor">
+          <div class="cv-year">2025</div>
+          <div class="cv-content">
+            <div class="cv-role">Grant Writing in Economics</div>
+            <div class="cv-place">IGC Research Methodology Workshop, Lusaka</div>
           </div>
         </div>
       </div>
       <div class="office-hours-card">
         <span class="office-hours-label">Current students</span>
-        <a href="https://bit.ly/dario-office-hours" class="office-hours-link" target="_blank">Office Hours &#8599;</a>
+        <a href="https://bit.ly/dario-office-hours" class="office-hours-link" target="_blank">Book Office Hours &#8599;</a>
       </div>
     </div>
   </section>
@@ -2047,7 +1438,6 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-header">
-      <span class="section-num">05 /</span>
       <h2>Get in Touch</h2>
     </div>
     <p class="contact-sub">
@@ -2058,20 +1448,13 @@
       <a href="mailto:dario.dequarti@graduateinstitute.ch" class="contact-link primary">
         &#9993; dario.dequarti@graduateinstitute.ch
       </a>
-      <a href="https://linkedin.com/in/dario-de-quarti/" class="contact-link secondary" target="_blank">
-        &#8599; LinkedIn
-      </a>
-      <a href="https://www.graduateinstitute.ch/other-programmes/dario-de-quarti" class="contact-link secondary" target="_blank">
-        &#8599; IHEID Profile
-      </a>
     </div>
   </section>
 
   <!-- FIELDWORK -->
   <section id="fieldwork" style="background:var(--bg);">
     <div class="section-header reveal">
-      <span class="section-num">06 /</span>
-      <h2>Gallery</h2>
+      <h2>Research Life</h2>
     </div>
     <div class="carousel-wrapper reveal" style="height:300px;">
       <button class="carousel-arrow carousel-arrow-left" id="fieldLeft" aria-label="Previous photo">&#8249;</button>
@@ -2084,12 +1467,12 @@
           <img src="pictures/presenting.jpg" alt="Presenting at IGC Research Methods Workshop" />
         </div>
         <div class="carousel-slide" data-caption="South Sudan trade network map" style="height:240px;width:340px;">
-          <img src="pictures/ssd_network_map.png" alt="South Sudan trade network map" />
+          <img src="pictures/ssd_network_map.jpg" alt="South Sudan trade network map" />
         </div>
         <div class="carousel-slide" data-caption="E-invoicing ad in Lusaka, Zambia" style="height:240px;width:340px;">
           <img src="pictures/zambia_smart_invoice.jpg" alt="E-invoicing advertisement in Lusaka, Zambia" style="object-fit:contain;background:var(--bg2);" />
         </div>
-        <div class="carousel-slide" data-caption="Loadshedding impacts SMEs activity &mdash; here in a beauty salon" style="height:240px;width:340px;">
+        <div class="carousel-slide" data-caption="Loadshedding impacts SMEs activity, here in a beauty salon" style="height:240px;width:340px;">
           <img src="pictures/beauty_salon_no_elec.jpg" alt="Beauty salon without electricity during loadshedding" />
         </div>
         <div class="carousel-slide" data-caption="Victoria Falls, Zambia" style="height:240px;width:340px;">
@@ -2101,6 +1484,9 @@
         <div class="carousel-slide" data-caption="50 billion Zimbabwe dollars" style="height:240px;width:340px;">
           <img src="pictures/50_billion.jpg" alt="50 billion Zimbabwe dollar bill" style="object-fit:contain;background:var(--bg2);" />
         </div>
+        <div class="carousel-slide" data-caption="Aurora Borealis seen during a research stay in Finland" style="height:240px;width:340px;">
+          <img src="pictures/finland_aurora.jpg" alt="Aurora borealis over pine forest in Finland" style="object-fit:contain;background:var(--bg2);" />
+        </div>
       </div>
     </div>
     <div class="carousel-caption" id="fieldCaption"></div>
@@ -2109,19 +1495,17 @@
   <!-- BEYOND RESEARCH -->
   <section id="football">
     <div class="section-header reveal">
-      <span class="section-num">07 /</span>
       <h2>Beyond Research</h2>
     </div>
     <p class="reveal" style="color:var(--ink2); font-size:1rem; max-width:600px; margin-bottom:2rem;">
-      National football referee in France until 2025 &mdash;
-      from Gambardella Cup to Ligue 2 matches &mdash;
-      and still refereeing in Switzerland.
+      My passion is to referee football. I've been a football ref in France at
+      the national level until 2025, and I am still refereeing in Switzerland.
     </p>
     <div class="carousel-wrapper reveal reveal-delay-1">
       <button class="carousel-arrow carousel-arrow-left" id="carLeft" aria-label="Previous photo">&#8249;</button>
       <button class="carousel-arrow carousel-arrow-right" id="carRight" aria-label="Next photo">&#8250;</button>
       <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide" data-caption="Gambardella Cup &mdash; tunnel">
+        <div class="carousel-slide" data-caption="Gambardella Cup - tunnel">
           <img src="pictures/gambardella_tunnel.jpg" alt="Gambardella Cup - tunnel" />
         </div>
         <div class="carousel-slide" data-caption="Paris FC &ndash; Bordeaux, Ligue 2">
@@ -2130,19 +1514,16 @@
         <div class="carousel-slide" data-caption="Rodez &ndash; Caen, Ligue 2">
           <img src="pictures/Rodez_Caen 4eme.jpeg" alt="Rodez vs Caen" />
         </div>
-        <div class="carousel-slide" data-caption="Gambardella Cup &mdash; with D&eacute;sir&eacute; Dou&eacute;">
+        <div class="carousel-slide" data-caption="Gambardella Cup - with D&eacute;sir&eacute; Dou&eacute;">
           <img src="pictures/gambardella_desire_doue.jpeg" alt="With Désiré Doué" />
         </div>
       </div>
     </div>
     <div class="carousel-caption" id="carCaption"></div>
-    <p class="reveal reveal-delay-2" style="text-align:center; margin-top:1.5rem;">
-      <a href="https://www.fff.fr/arbitre/2544618874-dario-de-quarti.html" class="btn btn-outline" target="_blank">FFF Referee Profile &#8599;</a>
-    </p>
   </section>
 
   <footer>
-    &copy; 2025 Dario De Quarti
+    &copy; 2026 Dario De Quarti and Claude Code
   </footer>
 
   <script>
@@ -2163,60 +1544,31 @@
       }
     });
 
-    /* ── TIMELINE / LIST VIEW TOGGLE ─────────────── */
-    function switchView(view) {
-      var tlContainer = document.getElementById('tlContainer');
-      var tlLegend = document.getElementById('tlLegend');
-      var listView = document.getElementById('tlListView');
-      var btnTimeline = document.getElementById('viewTimeline');
-      var btnList = document.getElementById('viewList');
-      if (view === 'list') {
-        tlContainer.classList.remove('active');
-        tlLegend.style.display = 'none';
-        listView.classList.add('active');
-        btnTimeline.classList.remove('active');
-        btnList.classList.add('active');
-      } else {
-        tlContainer.classList.add('active');
-        tlLegend.style.display = '';
-        listView.classList.remove('active');
-        btnTimeline.classList.add('active');
-        btnList.classList.remove('active');
-      }
-    }
-
-    /* ── LIST VIEW CLICK-TO-LOCK ──────────────── */
-    (function() {
-      var rows = document.querySelectorAll('.tl-list-row-wrap');
-      rows.forEach(function(row) {
-        row.addEventListener('click', function(e) {
-          if (e.target.closest('.tl-list-popup-link')) return;
-          var wasActive = row.classList.contains('active');
-          rows.forEach(function(r) { r.classList.remove('active'); });
-          if (!wasActive) row.classList.add('active');
-        });
-      });
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.tl-list-row-wrap')) {
-          rows.forEach(function(r) { r.classList.remove('active'); });
-        }
-      });
-    })();
 
     /* ── RESEARCH SUBSECTION COLLAPSE ───────────── */
     function toggleSubsection(id) {
       document.getElementById(id).classList.toggle('open');
     }
 
-    /* ── PAPER EXPAND/COLLAPSE ────────────────── */
-    function togglePaper(el) {
-      if (el.classList.contains('no-expand')) return;
-      const wasOpen = el.classList.contains('open');
-      document.querySelectorAll('.paper-item.open').forEach(p => p.classList.remove('open'));
-      if (!wasOpen) {
-        el.classList.add('open');
+    /* ── PAPER TOGGLES ────────────────────────── */
+    /* Description and pictures collapse independently. Description starts
+       open, pictures start closed. */
+    function toggleDesc(btn) {
+      const item = btn.closest('.paper-item');
+      item.classList.toggle('desc-closed');
+      btn.setAttribute('aria-expanded', !item.classList.contains('desc-closed'));
+    }
+
+    function togglePics(btn) {
+      const item = btn.closest('.paper-item');
+      item.classList.toggle('pics-open');
+      const open = item.classList.contains('pics-open');
+      btn.setAttribute('aria-expanded', open);
+      /* Carousels measure as zero-width while collapsed, so their height has
+         to be recomputed once the container is actually visible. */
+      if (open) {
         setTimeout(function() {
-          el.querySelectorAll('.paper-carousel').forEach(function(c) {
+          item.querySelectorAll('.paper-carousel').forEach(function(c) {
             updateCarouselHeight(c, 0);
           });
         }, 50);
@@ -2270,74 +1622,6 @@
       });
     });
 
-    /* ── TIMELINE ARROW NAV ───────────────────── */
-    (function() {
-      const track = document.getElementById('tlTrack');
-      const viewport = document.getElementById('tlViewport');
-      const leftBtn = document.getElementById('tlLeft');
-      const rightBtn = document.getElementById('tlRight');
-      let offset = 0;
-      const scrollStep = 260;
-
-      function getContentWidth() {
-        // Use the last child's right edge, not scrollWidth (which includes ::before)
-        var items = track.children;
-        if (items.length === 0) return 0;
-        var last = items[items.length - 1];
-        return last.offsetLeft + last.offsetWidth;
-      }
-      function getMaxOffset() {
-        return Math.max(0, getContentWidth() - viewport.clientWidth);
-      }
-      function updateArrows() {
-        const max = getMaxOffset();
-        leftBtn.classList.toggle('disabled', offset <= 0);
-        rightBtn.classList.toggle('disabled', offset >= max);
-      }
-      function scrollTo(newOffset) {
-        offset = Math.max(0, Math.min(newOffset, getMaxOffset()));
-        track.style.transform = 'translateX(' + (-offset) + 'px)';
-        updateArrows();
-      }
-      leftBtn.addEventListener('click', (e) => { e.stopPropagation(); scrollTo(offset - scrollStep); });
-      rightBtn.addEventListener('click', (e) => { e.stopPropagation(); scrollTo(offset + scrollStep); });
-
-      let touchStartX = 0, touchCurrentX = 0, isDragging = false;
-      viewport.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; touchCurrentX = touchStartX; isDragging = true; }, { passive: true });
-      viewport.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        touchCurrentX = e.touches[0].clientX;
-        const tempOffset = Math.max(0, Math.min(offset + (touchStartX - touchCurrentX), getMaxOffset()));
-        track.style.transform = 'translateX(' + (-tempOffset) + 'px)';
-      }, { passive: true });
-      viewport.addEventListener('touchend', () => { if (!isDragging) return; isDragging = false; scrollTo(offset + (touchStartX - touchCurrentX)); });
-
-      window.addEventListener('resize', () => { scrollTo(getMaxOffset()); });
-      // Start scrolled to the right (latest events visible)
-      function scrollToEnd() { scrollTo(getMaxOffset()); }
-      window.addEventListener('load', scrollToEnd);
-      setTimeout(scrollToEnd, 300);
-
-      // Click-to-lock: clicking a dot keeps the popup open so links are clickable
-      var items = track.querySelectorAll('.tl-item');
-      items.forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          // Don't lock if clicking a link inside the popup
-          if (e.target.closest('.tl-popup-link')) return;
-          var wasActive = item.classList.contains('active');
-          // Close any other active item
-          items.forEach(function(i) { i.classList.remove('active'); });
-          // Toggle this one
-          if (!wasActive) item.classList.add('active');
-        });
-      });
-      // Click outside timeline closes any locked popup
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.tl-item')) {
-          items.forEach(function(i) { i.classList.remove('active'); });
-        }
-      });
-    })();
 
     /* ── CAROUSEL (generic, works for multiple instances) ── */
     function initCarousel(trackId, captionId, leftId, rightId) {

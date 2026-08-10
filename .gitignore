@@ -1,0 +1,57 @@
+# This is a PUBLIC repository. Anything committed here is visible to anyone,
+# and stays in the git history even if deleted in a later commit.
+# Default posture: ignore everything that is not part of the published site.
+
+# ── Private documents. Never commit these. ──────────────────────────
+Students_feedback_Dario_MINT298_2025.pdf
+Messagerie*.pdf
+*_feedback_*.pdf
+
+# ── Photos of identifiable people without consent. ──────────────────
+# Seven faces, visible name badges. GDPR applies in Finland and Switzerland.
+# Do not remove these lines until every person has agreed in writing.
+pictures/finland_final.jpg
+pictures/finland_final_pres.jpg
+
+# ── CV sources. The compiled public PDF ships; the .tex does not. ───
+# The private full CV lives in Overleaf only and must never land here.
+*.tex
+cv_public.pdf
+
+# ── Orphaned assets, kept on disk but no longer on the site ─────────
+# Removed from the repo with `git rm --cached`. The local copies stay.
+# These lines only take effect once the files are untracked.
+pictures/geneva_grad_bckg.jpg
+pictures/ssd_network_map.png
+pictures/UNIL Logo.webp
+pictures/itc logo.svg
+pictures/wto logo.svg
+pictures/logo_simple_GenevaGraduateInstitute_2022_color_RGB.jpg
+
+# ── Working files, not part of the site ─────────────────────────────
+session_logs/
+.claude/
+CLAUDE.md
+timeline_events.md
+
+# ── Backup snapshots of index.html ──────────────────────────────────
+2026_*_final.html
+*_pre_overhaul.html
+
+# ── LaTeX build artefacts ───────────────────────────────────────────
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+*.toc
+
+# ── OS and editor noise ─────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+.DS_Store
+*~
+*.swp
