@@ -641,6 +641,8 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       width: 100%;
       transition: height 0.4s var(--ease);
+      /* Vertical swipes must still scroll the page. */
+      touch-action: pan-y;
     }
     .paper-carousel-track {
       display: flex;
@@ -686,6 +688,10 @@
       z-index: 2;
     }
     .paper-carousel-arrow:hover { border-color: var(--accent); color: var(--accent); }
+    /* These hang half outside the carousel. That works on desktop, where the
+       340px carousel is centred in a much wider column, but on a phone the
+       carousel fills the width and the overhang is clipped by
+       .paper-media's overflow:hidden. The mobile rule moves them inside. */
     .paper-carousel-arrow.left { left: -14px; }
     .paper-carousel-arrow.right { right: -14px; }
     .paper-carousel-dots {
@@ -1115,6 +1121,12 @@
       .carousel-slide[data-pos="-2"] { transform: translateX(-260%); }
       .carousel-arrow-left  { left: 0.25rem; }
       .carousel-arrow-right { right: 0.25rem; }
+
+      /* Paper-figure carousels: arrows inside the frame so they are not
+         clipped, and larger so they are a usable touch target. */
+      .paper-carousel-arrow { width: 34px; height: 34px; font-size: 1rem; }
+      .paper-carousel-arrow.left  { left: 6px; }
+      .paper-carousel-arrow.right { right: 6px; }
     }
     @media (max-width: 480px) {
       .nav-links .hide-mobile { display: none; }
@@ -1623,10 +1635,58 @@
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
       updateCarouselHeight(carousel, idx);
     }
-    /* Init all carousels to first slide height */
+    /* ── Touch swipe for the paper-figure carousels ──
+       Same gesture rules as the photo carousels: a horizontal drag past the
+       threshold changes slide, a mostly-vertical one is left to the page.
+       Deliberately no autoplay here: these are figures a reader is studying,
+       not a slideshow, so they must only move when asked. */
+    function initPaperSwipe(carousel) {
+      const track = carousel.querySelector('.paper-carousel-track');
+      const viewport = carousel.querySelector('.paper-carousel-viewport');
+      const dots = carousel.querySelectorAll('.paper-carousel-dot');
+      const total = track.children.length;
+      if (total < 2) return;
+
+      const THRESHOLD = 40;
+      let startX = 0, startY = 0, tracking = false;
+
+      function currentIndex() {
+        return Math.round(Math.abs(parseFloat(track.style.transform.replace('translateX(', '')) || 0) / 100);
+      }
+      function show(idx) {
+        if (idx < 0) idx = total - 1;
+        if (idx >= total) idx = 0;
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        updateCarouselHeight(carousel, idx);
+      }
+
+      viewport.addEventListener('touchstart', function(e) {
+        if (e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        tracking = true;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', function(e) {
+        if (!tracking) return;
+        tracking = false;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if (Math.abs(dx) > THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+          show(currentIndex() + (dx < 0 ? 1 : -1));
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchcancel', function() { tracking = false; }, { passive: true });
+    }
+
+    /* Init all carousels to first slide height, and enable swipe */
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.paper-carousel').forEach(function(c) {
         updateCarouselHeight(c, 0);
+        initPaperSwipe(c);
       });
     });
 
